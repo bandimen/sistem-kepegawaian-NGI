@@ -4,12 +4,15 @@ namespace Modules\Auth\Controllers;
 
 use App\Controllers\BaseController;
 use Modules\User\Models\UserModel;
+use Modules\JenisUser\Models\JenisUserModel;
 
 class AuthController extends BaseController
 {
+
     public function login()
     {
         $user = new UserModel();
+        $jenisUser = new JenisUserModel();
 
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
@@ -22,6 +25,8 @@ class AuthController extends BaseController
 
         // verifikasi dgn database
         $userData = $user->where('email', $email)->first();
+        $jenisUserData = $jenisUser->where('id', $userData['jenis_user_id'])->first();
+
         if ($userData && $userData['password'] === sha1($password)) {
             // login berhasil, simpan datanya ke sesi
             session()->set([
@@ -29,8 +34,15 @@ class AuthController extends BaseController
                 'email' => $userData['email'],
                 'is_logged_in' => true,
             ]);
-            echo 'miaw';
-            // return redirect()->to('/dashboard'); // Ubah sesuai rute setelah login
+            session()->set($userData);
+            // redirect ke halaman sesuai jenis user
+            if ($jenisUserData['nama'] == 'Admin') {
+                echo 'hai admin';
+            } elseif ($jenisUserData['nama'] == 'Pegawai') {
+                echo 'hai pegawai';
+            }
+
+            // return redirect()->to('/user/dashboard');
         } else {
             // login gagal
             session()->setFlashdata('error', 'Invalid email or password.');
