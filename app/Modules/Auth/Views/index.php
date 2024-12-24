@@ -35,12 +35,14 @@
                                     <h5 class="mb-0">Welcome Back !</h5>
                                     <p class="text-muted mt-2">Sign in to continue to Minia.</p>
                                 </div>
-                                <form class="custom-form mt-4 pt-2" action="" method="POST">
-                                    <?php if (session()->getFlashdata('error')) { ?>
-                                        <div class="alert alert-danger">
-                                            <?php echo session()->getFlashdata('error') ?>
-                                        </div>
-                                    <?php } ?>
+                                <?php if (session()->getFlashdata('error')) { ?>
+                                    <div class="alert alert-danger">
+                                        <?= session()->getFlashdata('error'); ?>
+                                    </div>
+                                <?php } ?>
+
+                                <form class="custom-form mt-4 pt-2" action="/auth/login" method="POST">
+                                    <?= csrf_field(); ?>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
