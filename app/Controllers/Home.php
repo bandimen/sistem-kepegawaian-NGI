@@ -6,8 +6,13 @@ class Home extends BaseController
 {
     protected array $data = [];
 
-    public function index(): string
+    // public function index(): string
+    // {
+    //     return view('index', $this->data);
+    // }
+
+    public function index()
     {
-        return view('index', $this->data);
+        return redirect()->to(base_url('auth'));
     }
 }

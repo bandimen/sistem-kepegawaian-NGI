@@ -9,6 +9,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->group('auth', ['namespace' => 'Modules\Auth\Controllers'], function ($routes) {
-  $routes->get('/', 'Auth::index'); // Akses ke Auth module
-  $routes->get('login', 'Auth::login'); // Contoh rute lain
+  $routes->get('/', 'Auth::index');
 });
