@@ -6,6 +6,6 @@ use CodeIgniter\Model;
 
 class JenisUserModel extends Model
 {
-    protected $table            = 'table'; 
+    protected $table            = 'jenis_user';
     protected $allowedFields    = [];
 }
