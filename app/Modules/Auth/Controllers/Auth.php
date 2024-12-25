@@ -11,6 +11,10 @@ class Auth extends BaseController
 
     public function index()
     {
+        // cek apakah user sudah login atau belum
+        if (session()->get('is_logged_in')) {
+            return redirect()->to('/dashboard');
+        }
         return view($this->folder_directory . 'index');
     }
 }

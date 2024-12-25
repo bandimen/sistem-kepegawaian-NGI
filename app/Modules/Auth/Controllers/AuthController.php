@@ -11,6 +11,11 @@ class AuthController extends BaseController
 
     public function login()
     {
+        // cek apakah user sudah login atau belum
+        if (session()->get('is_logged_in')) {
+            return redirect()->to('/dashboard');
+        }
+
         $user = new UserModel();
         $jenisUser = new JenisUserModel();
 
@@ -28,13 +33,13 @@ class AuthController extends BaseController
 
         if ($userData) {
             if ($userData && $userData['password'] === sha1($password)) {
-                // login berhasil, simpan datanya ke sesi
+                // // login berhasil, simpan datanya ke sesi
                 session()->set([
                     'user_id' => $userData['id'],
                     'email' => $userData['email'],
                     'is_logged_in' => true,
                 ]);
-                session()->set($userData);
+                // session()->set($userData);
 
                 return redirect()->to('/dashboard');
 
@@ -59,5 +64,11 @@ class AuthController extends BaseController
             session()->setFlashdata('password', $password);
             return redirect()->back();
         }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to(base_url());
     }
 }

@@ -8,13 +8,14 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Home::index');
 
-// routing untuk Auth
+// Routing untuk Auth
 $routes->group('', ['namespace' => 'Modules\Auth\Controllers'], function ($routes) {
   $routes->get('/login', 'Auth::index');
   $routes->post('/login', 'AuthController::login'); // ketika form dikirim
+  $routes->get('/logout', 'AuthController::logout');
 });
 
-// routing untuk User
-$routes->group('', ['namespace' => 'Modules\User\Controllers'], function ($routes) {
+// Routing untuk User dengan filter auth
+$routes->group('', ['namespace' => 'Modules\User\Controllers', 'filter' => 'auth'], function ($routes) {
   $routes->get('/dashboard', 'User::index');
 });
