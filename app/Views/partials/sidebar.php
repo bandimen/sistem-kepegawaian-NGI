@@ -234,7 +234,7 @@
 
             </ul>
 
-            <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
+            <!-- <div class="card sidebar-alert border-0 text-center mx-4 mb-0 mt-5">
                 <div class="card-body">
                     <img src="assets/images/giftbox.png" alt="">
                     <div class="mt-4">
@@ -243,7 +243,7 @@
                         <a href="#!" class="btn btn-primary mt-2"><?= lang('Files.Upgrade_Now') ?></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <!-- Sidebar -->
     </div>

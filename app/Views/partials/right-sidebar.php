@@ -122,11 +122,11 @@
                     id="layout-direction-ltr" value="ltr">
                 <label class="form-check-label" for="layout-direction-ltr">LTR</label>
             </div>
-            <div class="form-check form-check-inline">
+            <!-- <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="layout-direction"
                     id="layout-direction-rtl" value="rtl">
                 <label class="form-check-label" for="layout-direction-rtl">RTL</label>
-            </div>
+            </div> -->
 
         </div>
 

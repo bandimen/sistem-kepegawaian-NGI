@@ -9,7 +9,7 @@
 
 </head>
 
-<body data-layout-size="fluid" data-sidebar-size="sm">
+<body data-layout-size="fluid" data-sidebar-size="lg">
 
     <!-- Begin page -->
     <div id="layout-wrapper">
