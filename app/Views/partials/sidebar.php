@@ -27,13 +27,13 @@
                                 <span data-key="t-calendar"><?= lang('Files.Calendar') ?></span>
                             </a>
                         </li>
-        
+
                         <li>
                             <a href="apps-chat">
                                 <span data-key="t-chat"><?= lang('Files.Chat') ?></span>
                             </a>
                         </li>
-        
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow">
                                 <span data-key="t-email"><?= lang('Files.Email') ?></span>

@@ -41,11 +41,11 @@
                                     </div>
                                 <?php } ?>
 
-                                <form class="custom-form mt-4 pt-2" action="/auth/login" method="POST">
+                                <form class="custom-form mt-4 pt-2" action="" method="POST">
                                     <?= csrf_field(); ?>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="email" id="email" placeholder="Enter email">
+                                        <input type="text" class="form-control" name="email" id="email" value="<?= session()->getFlashdata('email') ?>" placeholder="Enter email">
                                     </div>
                                     <div class="mb-3">
                                         <div class="d-flex align-items-start">
@@ -55,7 +55,7 @@
                                         </div>
 
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password" name="password" class="form-control" id="password" value="<?= session()->getFlashdata('password') ?>" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
                                             <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
                                     </div>
