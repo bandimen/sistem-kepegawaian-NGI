@@ -16,9 +16,9 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * Router Setup
  * --------------------------------------------------------------------
  */
-$routes->setDefaultNamespace('App\Modules\Land\Controllers');
-$routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+// $routes->setDefaultNamespace('App\Modules\Auth\Controllers');
+// $routes->setDefaultController('Auth');
+// $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
