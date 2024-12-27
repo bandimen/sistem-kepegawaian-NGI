@@ -24,4 +24,13 @@ class User extends BaseController
 
         return view($this->folder_directory . 'dashboard', $data);
     }
+
+    public function show_form_elements()
+	{
+		$data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+			'page_title' => view('partials/page-title', ['title' => 'Basic_Elements', 'li_1' => 'Forms', 'li_2' => 'Basic Elements']),
+		];
+		return view($this->folder_directory. 'form-elements', $data);
+	}
 }

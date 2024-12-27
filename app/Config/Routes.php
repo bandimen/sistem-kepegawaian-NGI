@@ -18,4 +18,5 @@ $routes->group('', ['namespace' => 'Modules\Auth\Controllers'], function ($route
 // Routing untuk User dengan filter auth
 $routes->group('', ['namespace' => 'Modules\User\Controllers', 'filter' => 'auth'], function ($routes) {
   $routes->get('/dashboard', 'User::index');
+  $routes->get('/form-elements', 'User::show_form_elements');
 });
