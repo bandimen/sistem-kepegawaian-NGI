@@ -54,4 +54,48 @@ class User extends BaseController
         ];
         return view($this->folder_directory . "\\form\\" . 'form-cuti', $data);
     }
+
+    public function show_form_dinas_luar()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+            'page_title' => view('partials/page-title', ['title' => 'Form Dinas Luar', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'userData'   => $userData,
+        ];
+        return view($this->folder_directory . "\\form\\" . 'form-dinas-luar', $data);
+    }
+
+    public function show_form_peminjaman_karyawan()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+            'page_title' => view('partials/page-title', ['title' => 'Form peminjaman Karyawan', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'userData'   => $userData,
+        ];
+        return view($this->folder_directory . "\\form\\" . 'form-peminjaman-karyawan', $data);
+    }
+    public function show_form_slip_gaji()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+            'page_title' => view('partials/page-title', ['title' => 'Form Slip Gaji', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'userData'   => $userData,
+        ];
+        return view($this->folder_directory . "\\form\\" . 'form-slip-gaji', $data);
+    }
 }

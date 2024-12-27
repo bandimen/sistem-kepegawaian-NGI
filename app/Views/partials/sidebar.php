@@ -155,6 +155,9 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?= base_url('form-lembur') ?>" data-key="t-form-lembur"><?= lang('Form Lembur') ?></a></li>
                         <li><a href="<?= base_url('form-cuti') ?>" data-key="t-form-cuti"><?= lang('Form Cuti') ?></a></li>
+                        <li><a href="<?= base_url('form-dinas-luar') ?>" data-key="t-form-dinas-luar"><?= lang('Form Dinas Luar') ?></a></li>
+                        <li><a href="<?= base_url('form-peminjaman-karyawan') ?>" data-key="t-form-peminjaman-karyawan"><?= lang('Form Peminjaman Karyawan') ?></a></li>
+                        <li><a href="<?= base_url('form-slip-gaji') ?>" data-key="t-form-slip-gaji"><?= lang('Form Slip Gaji') ?></a></li>
                     </ul>
                 </li>
 
