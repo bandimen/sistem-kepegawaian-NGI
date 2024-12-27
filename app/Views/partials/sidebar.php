@@ -7,12 +7,12 @@
         <div id="sidebar-menu">
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-                <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
+                <li class="menu-title" data-key="t-menu"><?= 'Menu' ?></li>
 
                 <li>
                     <a href="/">
                         <i data-feather="home"></i>
-                        <span data-key="t-dashboard"><?= lang('Files.Dashboard') ?></span>
+                        <span data-key="t-dashboard"><?= 'Dashboard' ?></span>
                     </a>
                 </li>
 
@@ -147,7 +147,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript: void(0);">
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="box"></i>
                         <span class="badge rounded-pill bg-soft-danger text-danger float-end"></span>
                         <span data-key="t-forms"><?= lang('Form Pengajuan') ?></span>
