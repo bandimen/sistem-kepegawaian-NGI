@@ -149,17 +149,12 @@
                 <li>
                     <a href="javascript: void(0);">
                         <i data-feather="box"></i>
-                        <span class="badge rounded-pill bg-soft-danger text-danger float-end">7</span>
-                        <span data-key="t-forms"><?= lang('Files.Forms') ?></span>
+                        <span class="badge rounded-pill bg-soft-danger text-danger float-end"></span>
+                        <span data-key="t-forms"><?= lang('Form Pengajuan') ?></span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="<?= base_url('form-elements') ?>" data-key="t-form-elements"><?= lang('Files.Basic_Elements') ?></a></li>
-                        <li><a href="form-validation" data-key="t-form-validation"><?= lang('Files.Validation') ?></a></li>
-                        <li><a href="form-advanced" data-key="t-form-advanced"><?= lang('Files.Advanced_Plugins') ?></a></li>
-                        <li><a href="form-editors" data-key="t-form-editors"><?= lang('Files.Editors') ?></a></li>
-                        <li><a href="form-uploads" data-key="t-form-upload"><?= lang('Files.File_Upload') ?></a></li>
-                        <li><a href="form-wizard" data-key="t-form-wizard"><?= lang('Files.Wizard') ?></a></li>
-                        <li><a href="form-mask" data-key="t-form-mask"><?= lang('Files.Mask') ?></a></li>
+                        <li><a href="<?= base_url('form-lembur') ?>" data-key="t-form-lembur"><?= lang('Form Lembur') ?></a></li>
+                        <li><a href="<?= base_url('form-cuti') ?>" data-key="t-form-cuti"><?= lang('Form Cuti') ?></a></li>
                     </ul>
                 </li>
 

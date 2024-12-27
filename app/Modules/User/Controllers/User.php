@@ -25,7 +25,7 @@ class User extends BaseController
         return view($this->folder_directory . 'dashboard', $data);
     }
 
-    public function show_form_elements()
+    public function show_form_lembur()
     {
         $sesi = session()->get();
 
@@ -34,9 +34,24 @@ class User extends BaseController
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
-            'page_title' => view('partials/page-title', ['title' => 'Basic_Elements', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'page_title' => view('partials/page-title', ['title' => 'Form Lembur', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
             'userData'   => $userData,
         ];
-        return view($this->folder_directory . 'form-elements', $data);
+        return view($this->folder_directory . "\\form\\" . 'form-lembur', $data);
+    }
+
+    public function show_form_cuti()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+            'page_title' => view('partials/page-title', ['title' => 'Form Cuti', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'userData'   => $userData,
+        ];
+        return view($this->folder_directory . "\\form\\" . 'form-cuti', $data);
     }
 }
