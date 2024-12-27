@@ -8,7 +8,7 @@
                         <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">SimPeg</span>
                     </span>
                 </a>
 
@@ -17,7 +17,7 @@
                         <img src="assets/images/logo-sm.svg" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Minia</span>
+                        <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">SimPeg</span>
                     </span>
                 </a>
             </div>
@@ -26,6 +26,7 @@
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
+            <span class="align-self-center ms-3 fw-medium" id="welcome-text" style="font-size: 1.25rem;">Welcome, <?= $userData['nama'] ?> as ...</span>
 
         </div>
 
@@ -53,10 +54,9 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="apps-contacts-profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= lang('Files.Profile') ?></a>
-                    <!-- <a class="dropdown-item" href="auth-lock-screen"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> <?= lang('Files.Lock_screen') ?></a> -->
-                    <!-- <div class="dropdown-divider"></div> -->
-                    <a class="dropdown-item" href="auth-login"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= lang('Files.Logout') ?></a>
+                    <a class="dropdown-item" href="apps-contacts-profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= 'Profile' ?></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= 'Logout' ?></a>
                 </div>
             </div>
 
