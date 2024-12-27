@@ -25,7 +25,10 @@
                 <div class="container-fluid">
 
                     <?= $page_title ?>
-
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Welcome, <?= $userData['nama'] ?> as ...</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
 
                 </div>
                 <!-- container-fluid -->

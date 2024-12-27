@@ -26,7 +26,7 @@
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
-            <span class="align-self-center ms-3 fw-medium" id="welcome-text" style="font-size: 1.25rem;">Welcome, <?= $userData['nama'] ?> as ...</span>
+            <!-- <span class="align-self-center ms-3 fw-medium" id="welcome-text" style="font-size: 1.25rem;"><strong>Welcome, <?= $userData['nama'] ?> as ...</strong></span> -->
 
         </div>
 

@@ -26,7 +26,7 @@ class AuthController extends BaseController
         }
 
         // verifikasi dgn database
-        $userData = $user->where('email', $email)->first();
+        $userData = $user->where('email', $email)->where('is_deleted', 0)->first();
 
         if ($userData && $userData['password'] === sha1($password)) {
             // // login berhasil, simpan datanya ke sesi

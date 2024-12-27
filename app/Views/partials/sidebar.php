@@ -18,6 +18,17 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="sliders"></i>
+                        <span data-key="t-tables"><?= 'Administrator' ?></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="manajemen-user" data-key="t-manajemen-user"><?= 'Manajemen User' ?></a></li>
+                        <li><a href="manajemen-jenisuser" data-key="t-manajemen-jenisuser"><?= 'Manajemen Jenis User' ?></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="grid"></i>
                         <span class="badge rounded-pill bg-soft-danger text-danger float-end"></span>
                         <span data-key="t-forms"><?= lang('Form Pengajuan') ?></span>
@@ -31,16 +42,7 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="sliders"></i>
-                        <span data-key="t-tables"><?= 'Administrator' ?></span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="manajemen-user" data-key="t-manajemen-user"><?= 'Manajemen User' ?></a></li>
-                        <li><a href="manajemen-jenisuser" data-key="t-manajemen-jenisuser"><?= 'Manajemen Jenis User' ?></a></li>
-                    </ul>
-                </li>
+
 
 
             </ul>
