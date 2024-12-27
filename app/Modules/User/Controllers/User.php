@@ -26,11 +26,17 @@ class User extends BaseController
     }
 
     public function show_form_elements()
-	{
-		$data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
-			'page_title' => view('partials/page-title', ['title' => 'Basic_Elements', 'li_1' => 'Forms', 'li_2' => 'Basic Elements']),
-		];
-		return view($this->folder_directory. 'form-elements', $data);
-	}
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
+            'page_title' => view('partials/page-title', ['title' => 'Basic_Elements', 'li_1' => 'Forms', 'li_2' => 'Basic Elements', 'li_3' => 'Dashboard']),
+            'userData'   => $userData,
+        ];
+        return view($this->folder_directory . 'form-elements', $data);
+    }
 }
