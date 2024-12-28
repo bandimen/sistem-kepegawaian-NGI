@@ -52,19 +52,19 @@
                     <!-- Tabs Content -->
                     <div>
                         <!-- Data Tab -->
-                        <!-- Data Tab -->
                         <div id="data-tab" class="tab-content active">
                             <h4>Data</h4>
                             <p>Berikut adalah data yang tersedia:</p>
                             <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">No. HP</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Jenis User</th>
-                                    </tr>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">No. HP</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Jenis User</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -73,6 +73,14 @@
                                         <td>628123456789</td>
                                         <td>johndoe@example.com</td>
                                         <td>Admin</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm" title="Edit">
+                                                <i class="mdi mdi-file-document-edit-outline"></i> Edit
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" title="Hapus">
+                                                <i class="mdi mdi-delete-forever-outline"></i> Hapus
+                                            </button>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">2</th>
@@ -80,6 +88,15 @@
                                         <td>628987654321</td>
                                         <td>janesmith@example.com</td>
                                         <td>Operator</td>
+                                        <td>
+                                        <div class="btn-group me-2 mb-2 mb-sm-0">
+                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-trash"></i></button>
+                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa dripicons-preview"></i></button>
+                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button> -->
+                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button> -->
+                                    </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

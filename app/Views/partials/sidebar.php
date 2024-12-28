@@ -17,6 +17,13 @@
                 </li>
 
                 <li>
+                    <a href="<?= base_url('data-karyawan') ?>">
+                        <i data-feather="users"></i>
+                        <span data-key="t-authentication"><?= 'Data Karyawan' ?></span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="sliders"></i>
                         <span data-key="t-tables"><?= 'Administrator' ?></span>

@@ -54,7 +54,7 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <!-- item-->
-                    <a class="dropdown-item" href="apps-contacts-profile"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= 'Profile' ?></a>
+                    <a class="dropdown-item" href="<?= base_url('profil') ?>"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> <?= 'Profil' ?></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= 'Logout' ?></a>
                 </div>
