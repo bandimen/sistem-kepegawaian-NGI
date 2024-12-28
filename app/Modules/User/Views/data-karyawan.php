@@ -63,7 +63,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="validationCustom01">Nama</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="NAMA LENGKAP KARYAWAN" required>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Nama Lengkap Karyawan" required>
                                                 <div class="invalid-feedback">
                                                     Masukkan nama lengkap.
                                                 </div>
@@ -87,7 +87,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label class="form-label" for="validationCustom03">Username</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="USERNAME" required>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Username" required>
                                                 <div class="invalid-feedback">
                                                     Masukkan username.
                                                 </div>
@@ -101,23 +101,21 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="validationCustom03">KJP (NOMOR BPJS)</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="KJP (NOMOR BPJS)" maxlength="11" required>
+                                                <input type="number" class="form-control" id="validationCustom03" placeholder="KJP (Nomor BPJS)" maxlength="11" required>
                                                 <div class="invalid-feedback">
                                                     Maksimal 11 digit.
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- Second Row (3 Columns) -->
-                                        <div class="row">
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="validationCustom03">KOTA LAHIR</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="KOTA LAHIR" required min="15">
+                                                <input type="number" class="form-control" id="validationCustom03" placeholder="Kota Lahir" required min="15">
                                                 <div class="invalid-feedback">Maksimal 15 digit.</div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="validationCustom03">TANGGAL LAHIR</label>
-                                                <input type="date" class="form-control" id="validationCustom03" placeholder="TANGGAL LAHIR" required min="15">
+                                                <input type="date" class="form-control" id="validationCustom03" placeholder="Tanggal Lahir" required min="15">
                                                 <div class="invalid-feedback">Maksimal 15 digit.</div>
                                             </div>
                                             <div class="col-md-4 mb-3">
@@ -143,8 +141,6 @@
                                                 <textarea class="form-control" id="validationCustom03" placeholder="Alamat Korespondensi" required min="15"></textarea>
                                                 <div class="invalid-feedback">Maksimal 15 digit.</div>
                                             </div>
-                                        </div>
-                                        <!-- end row -->
 
                                         <div class="col-lg-6">
                                             <div class="mb-3">
@@ -165,8 +161,123 @@
                                             </div>
                                         </div>
 
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">UNIT KERJA</label>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Unit Kerja" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">DIVISI</label>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Divisi" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">JABATAN</label>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Jabatan" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">GRADE</label>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Grade" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">STATUS KONTRAK</label>
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Unit Kerja" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-label" for="validationCustom03">TANGGAL MASUK</label>
+                                                <input type="date" class="form-control" id="validationCustom03" placeholder="Tanggal Masuk" required min="15">
+                                                <div class="invalid-feedback">Maksimal 15 digit.</div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">STATUS PERNIKAHAN</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Status Pernikahan" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom04">JUMLAH TANGGUNGAN</label>
+                                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Jumlah Tanggungan" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">EMAIL KANTOR</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Email Kantor" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom04">EMAIL PRIBADI</label>
+                                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Email Pribadi" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">NOMOR TELEPON</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Nomor Telepon" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom04">NOMOR REKENING</label>
+                                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Nomor Rekening" required>
+                                                    <div class="invalid-feedback">-.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="fileKTP">KTP</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="fileKTP" required>
+                                                    <div class="invalid-feedback">File KTP diperlukan.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="fileKJP">KJP</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="fileKJP" required>
+                                                    <div class="invalid-feedback">File KJP diperlukan.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="fileNPWP">NPWP</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="fileNPWP" required>
+                                                    <div class="invalid-feedback">File NPWP diperlukan.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="fileKK">KARTU KELUARGA</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="fileKK" required>
+                                                    <div class="invalid-feedback">File Kartu Keluarga diperlukan.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label" for="filePendidikan">PENDIDIKAN TERAKHIR</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="filePendidikan" required>
+                                                    <div class="invalid-feedback">File Pendidikan Terakhir diperlukan.</div>
+                                                </div>
+                                            </div>
+
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Submit</button>
+                                            <button type="reset" class="btn btn-danger">Reset</button>
                                         </div>
                                     </div>
                                 </div>
