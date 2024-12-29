@@ -6,6 +6,6 @@ use CodeIgniter\Model;
 
 class DataKaryawanModel extends Model
 {
-    protected $table            = 'table'; 
+    protected $table            = 'users'; 
     protected $allowedFields    = [];
 }
