@@ -27,6 +27,21 @@ class User extends BaseController
         return view($this->folder_directory . 'dashboard', $data);
     }
 
+    public function show_data_karyawan()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
+			'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Contacts' , 'li_2' => 'Profile']),
+            'userData'   => $userData,
+		];
+        return view($this->folder_directory . 'data-karyawan', $data);
+    }
+
     public function show_form_lembur()
     {
         $sesi = session()->get();
@@ -86,6 +101,7 @@ class User extends BaseController
         ];
         return view($this->folder_directory . "\\form\\" . 'form-peminjaman-karyawan', $data);
     }
+
     public function show_form_slip_gaji()
     {
         $sesi = session()->get();
@@ -99,5 +115,20 @@ class User extends BaseController
             'userData'   => $userData,
         ];
         return view($this->folder_directory . "\\form\\" . 'form-slip-gaji', $data);
+    }
+
+    public function show_profil()
+    {
+        $sesi = session()->get();
+
+        $user = new UserModel();
+        $userData = $user->where('id', $sesi['user_id'])->first();
+
+        $data = [
+			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
+			'page_title' => view('partials/page-title', ['title' => 'Profil', 'li_1' => 'Contacts' , 'li_2' => 'Profile']),
+            'userData'   => $userData,
+		];
+        return view($this->folder_directory . 'profil', $data);
     }
 }
