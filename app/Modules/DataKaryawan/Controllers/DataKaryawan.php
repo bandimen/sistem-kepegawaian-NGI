@@ -4,7 +4,6 @@ namespace Modules\DataKaryawan\Controllers;
 
 use Modules\User\Models\UserModel;
 use App\Controllers\BaseController;
-use Modules\User\Models\UserModel;
 use Modules\Divisi\Models\DivisiModel;
 use Modules\Grade\Models\GradeModel;
 use Modules\Jabatan\Models\JabatanModel;
@@ -42,7 +41,7 @@ class DataKaryawan extends BaseController
 
     public function show_data_karyawan()
     {
-        $userData = $this->userModel
+        $users = $this->userModel
             ->select('user.id, user.nama, user.email, divisi.nama as divisi, jabatan.nama as jabatan')
             ->join('karyawan', 'user.id = karyawan.user_id', 'left')
             ->join('divisi', 'karyawan.divisi_id = divisi.id', 'left')
@@ -57,7 +56,8 @@ class DataKaryawan extends BaseController
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
             'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Dashboard', 'li_2' => 'Data Karyawan']),
-            'users' => $userData,
+            'userData' => $userData,
+            'users' => $users,
             'provinsiData' => $provinsiData,
         ];
 

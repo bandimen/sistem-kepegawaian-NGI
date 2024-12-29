@@ -147,7 +147,7 @@
                                             <!-- ini pake select2 -->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="provinsi">Pilih Provinsi</label>
+                                                    <label class="form-label" for="provinsi">PILIH PROVINSI</label>
                                                     <select class="form-select" id="provinsi" name="provinsi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($provinsiData as $provinsi) : ?>
@@ -160,10 +160,11 @@
                                             <!-- ini pake select2 -->
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="kota">KAB/KOTA DOMISILI</label>
-                                                    <select name="kota" id="kota" class="form-control"></select>
-                                                    <div class="invalid-feedback">
-                                                    </div>
+                                                    <label class="form-label" for="kota">PILIH KAB/KOTA DOMISILI</label>
+                                                    <select class="form-select" id="kota" name="kota" required>
+                                                        <option value=""></option>
+                                                    </select>
+                                                    <div class="invalid-feedback">Silakan pilih kab/kota.</div>
                                                 </div>
                                             </div>
                                             <!-- ini pake select2 -->
@@ -366,7 +367,31 @@
     <!-- select2 -->
     <script>
         $('#provinsi').select2({
-            placeholder: "Pilih Provinsi"
+            placeholder: "Pilih Provinsi",
+            theme: "bootstrap-5",
+        });
+        $('#kota').select2({
+            placeholder: "Pilih Kab/Kota",
+            theme: "bootstrap-5",
+            ajax: {
+                url: "<?= site_url('data-karyawan/ajaxKota') ?>",
+                type: "POST",
+                dataType: 'json',
+                delay: 250,
+                data: function(data) {
+                    return {
+                        kode_prov: $('#provinsi').val(),
+                        searchTerm: data.term
+                    };
+                },
+                processResults: function(data) {
+                    return {
+                        results: data.data, // Sesuai dengan "data" yang dikembalikan.
+                    };
+                },
+
+                cache: true
+            }
         });
     </script>
 

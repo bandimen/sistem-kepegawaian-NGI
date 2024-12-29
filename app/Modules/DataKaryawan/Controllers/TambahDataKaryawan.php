@@ -4,6 +4,7 @@ namespace Modules\DataKaryawan\Controllers;
 
 use App\Controllers\BaseController;
 use Modules\User\Models\UserModel;
+use Modules\Kota\Models\KotaModel;
 use Modules\Karyawan\Models\KaryawanModel;
 
 class TambahDataKaryawan extends BaseController
@@ -11,53 +12,40 @@ class TambahDataKaryawan extends BaseController
   protected $folder_directory = "Modules\\DataKaryawan\\Views\\";
 
   protected $userModel;
+  protected $kotaModel;
+
   public function __construct()
   {
     $this->userModel = new UserModel();
+    $this->kotaModel = new KotaModel();
   }
 
-  // public function tambahKaryawan()
-  // {
-  //   if ($this->request->isAJAX()) {
-  //     $validation = \Config\Services::validation();
+  public function ajaxKotaDropdown()
+  {
+    $kode_prov = $this->request->getVar('kode_prov');
 
-  //     $valid = $this->validate([
-  //       'nama' => [
-  //         'label' => 'Nama',
-  //         'rules' => 'required|alpha_space',
-  //         'errors' => [
-  //           'required' => 'Nama tidak boleh kosong',
-  //           'alpha_space' => 'Nama hanya boleh berisi huruf dan spasi',
-  //         ]
-  //       ]
-  //     ]);
+    // ambil semua kota berdasarkan provinsi yg udah dipilih
+    $listKota = $this->kotaModel->where('kode_provinsi', $kode_prov)
+      ->where('is_deleted', 0);
 
-  //     if (!$valid) {
-  //       $msg = [
-  //         'error' => [
-  //           'nama' => $validation->getError('nama'),
-  //         ]
-  //       ];
+    // jika diketikkan sesuatu di pencariannya
+    if ($this->request->getVar('searchTerm')) {
+      $searchTerm = $this->request->getVar('searchTerm');
+      $listKota = $listKota->like('nama', $searchTerm);
+    }
 
-  //       return $this->response->setJSON($msg);
-  //     }
+    $listKota = $listKota->orderBy('nama')->findAll();
 
-  //     // Jika validasi berhasil
-  //     $data = [
-  //       'nama' => $this->request->getPost('nama'),
-  //     ];
 
-  //     // Simpan ke database
-  //     $model = new KaryawanModel();
-  //     $model->insert($data);
+    $data = [];
 
-  //     $msg = [
-  //       'success' => 'Data karyawan berhasil ditambahkan'
-  //     ];
-
-  //     return $this->response->setJSON($msg);
-  //   } else {
-  //     throw new \CodeIgniter\Exceptions\PageNotFoundException();
-  //   }
-  // }
+    foreach ($listKota as $kota) {
+      $data[] = [
+        'id' => $kota['id'],
+        'text' => $kota['nama'],
+      ];
+    }
+    $response['data'] = $data;
+    return $this->response->setJSON($response);
+  }
 }
