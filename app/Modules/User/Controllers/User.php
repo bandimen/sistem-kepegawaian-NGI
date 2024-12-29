@@ -9,19 +9,22 @@ class User extends BaseController
 {
     protected $folder_directory = "Modules\\User\\Views\\";
 
+    protected $userModel;
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+    }
+
     public function index()
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->getUser($sesi['user_id']);
-        $isPegawai = $user->isPegawai($sesi['user_id']);
+        $userData = $this->userModel->getUser($sesi['user_id']);
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
             'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Minia', 'li_2' => 'Dashboard']),
             'userData'   => $userData,
-            'isPegawai'  => $isPegawai,
         ];
 
         return view($this->folder_directory . 'dashboard', $data);
@@ -31,14 +34,13 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
-			'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Contacts' , 'li_2' => 'Profile']),
+            'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
+            'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Dashboard', 'li_2' => 'Data Karyawan ']),
             'userData'   => $userData,
-		];
+        ];
         return view($this->folder_directory . 'data-karyawan', $data);
     }
 
@@ -46,8 +48,7 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
@@ -61,8 +62,7 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
@@ -76,8 +76,7 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
@@ -91,8 +90,7 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
@@ -106,8 +104,7 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Basic_Elements']),
@@ -121,14 +118,13 @@ class User extends BaseController
     {
         $sesi = session()->get();
 
-        $user = new UserModel();
-        $userData = $user->where('id', $sesi['user_id'])->first();
+        $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
         $data = [
-			'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
-			'page_title' => view('partials/page-title', ['title' => 'Profil', 'li_1' => 'Contacts' , 'li_2' => 'Profile']),
+            'title_meta' => view('partials/title-meta', ['title' => 'Profile']),
+            'page_title' => view('partials/page-title', ['title' => 'Profil', 'li_1' => 'Contacts', 'li_2' => 'Profile']),
             'userData'   => $userData,
-		];
+        ];
         return view($this->folder_directory . 'profil', $data);
     }
 }

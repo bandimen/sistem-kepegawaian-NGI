@@ -16,12 +16,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="<?= base_url('data-karyawan') ?>">
-                        <i data-feather="users"></i>
-                        <span data-key="t-authentication"><?= 'Data Karyawan' ?></span>
-                    </a>
-                </li>
 
                 <li>
                     <a href="<?= base_url('data-karyawan') ?>">

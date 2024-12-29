@@ -44,8 +44,8 @@
                                 <form class="custom-form mt-4 pt-2" action="" method="POST">
                                     <?= csrf_field(); ?>
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" name="email" id="email" value="<?= session()->getFlashdata('email') ?>" placeholder="Enter email">
+                                        <label for="username" class="form-label">Username</label>
+                                        <input type="text" class="form-control" name="username" id="username" value="<?= session()->getFlashdata('username') ?>" placeholder="Enter username" autofocus>
                                     </div>
                                     <div class="mb-3">
                                         <div class="d-flex align-items-start">

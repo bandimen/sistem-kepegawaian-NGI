@@ -12,27 +12,26 @@ class AuthController extends BaseController
     public function login()
     {
         $user = new UserModel();
-        $jenisUser = new JenisUserModel();
 
-        $email = $this->request->getVar('email');
+        $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
         // jika input kosong
-        if (empty($email) || empty($password)) {
-            session()->setFlashdata('email', $email);
+        if (empty($username) || empty($password)) {
+            session()->setFlashdata('username', $username);
             session()->setFlashdata('password', $password);
-            session()->setFlashdata('error', 'Please input email and password.');
+            session()->setFlashdata('error', 'Please input username and password.');
             return redirect()->back();
         }
 
         // verifikasi dgn database
-        $userData = $user->where('email', $email)->where('is_deleted', 0)->first();
+        $userData = $user->where('username', $username)->where('is_deleted', 0)->first();
 
         if ($userData && $userData['password'] === sha1($password)) {
             // // login berhasil, simpan datanya ke sesi
             session()->set([
                 'user_id' => $userData['id'],
-                'email' => $userData['email'],
+                'username' => $userData['username'],
                 'is_logged_in' => true,
             ]);
             // session()->set($userData);
@@ -40,8 +39,8 @@ class AuthController extends BaseController
             return redirect()->to('/dashboard');
         } else {
             // login gagal
-            session()->setFlashdata('error', 'Invalid email or password.');
-            session()->setFlashdata('email', $email);
+            session()->setFlashdata('error', 'Invalid username or password.');
+            session()->setFlashdata('username', $username);
             session()->setFlashdata('password', $password);
             return redirect()->back();
         }

@@ -7,13 +7,14 @@ use CodeIgniter\Model;
 class UserModel extends Model
 {
     protected $table            = 'user';
-    protected $allowedFields    = ['id', 'nama', 'email', 'password', 'jenis_user_id', 'created_at', 'created_by', 'updated_at', 'updated_by', 'is_deleted'];
+    // protected $primaryKey       = 'id';
+    protected $useTimestamps    = true;
+    protected $allowedFields    = ['nama', 'username', 'password', 'created_at', 'updated_at', 'created_by', 'updated_by', 'is_deleted'];
 
     public function getUser($userId)
     {
         $result = $this->db->table('user')
-            ->select('user.*, jenis_user.nama AS nama_jenis_user')
-            ->join('jenis_user', 'jenis_user.id = user.jenis_user_id')
+            ->select('user.*')
             ->where('user.id', $userId)
             ->get()
             ->getRowArray();
@@ -21,15 +22,18 @@ class UserModel extends Model
         return $result;
     }
 
-    public function isPegawai($userId)
-    {
-        $result = $this->db->table('user')
-            ->select('jenis_user.nama AS nama_jenis_user')
-            ->join('jenis_user', 'jenis_user.id = user.jenis_user_id')
-            ->where('user.id', $userId)
-            ->get()
-            ->getRowArray();
+    // public function getUser($userId)
+    // {
+    //     $result = $this->db->table('user')
+    //         ->select('user.*, grade.kategori AS grade, status_kontrak.status AS status_kontrak, status_pernikahan.status AS status_pernikahan')
+    //         ->join('grade', 'grade.id = user.grade_id')
+    //         ->join('status_kontrak', 'status_kontrak.id = user.status_kontrak_id')
+    //         ->join('status_pernikahan', 'status_pernikahan.id = user.status_pernikahan_id')
+    //         ->where('user.id', $userId)
+    //         ->get()
+    //         ->getRowArray();
 
-        return $result['nama_jenis_user'] === "Pegawai";
-    }
+    //     return $result;
+    // }
+
 }

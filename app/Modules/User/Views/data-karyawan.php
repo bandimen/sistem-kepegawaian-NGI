@@ -58,55 +58,55 @@
 
                             <div class="card">
                                 <div class="card-body p-4">
-                                <form class="needs-validation" novalidate>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom01">Nama</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Nama Lengkap Karyawan" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan nama lengkap.
+                                    <form class="needs-validation" novalidate>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom01">Nama</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Nama Lengkap Karyawan" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan nama lengkap.
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom02">NIP</label>
+                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="NIP" required min="10">
+                                                    <div class="invalid-feedback">
+                                                        Maksimal 10 digit.
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">NPWP</label>
+                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="NPWP" required min="15">
+                                                    <div class="invalid-feedback">
+                                                        Maksimal 15 digit.
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom02">NIP</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="NIP" required min="10">
-                                                <div class="invalid-feedback">
-                                                    Maksimal 10 digit.
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom03">NPWP</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="NPWP" required min="15">
-                                                <div class="invalid-feedback">
-                                                    Maksimal 15 digit.
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom03">Username</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Username" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan username.
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">Username</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Username" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan username.
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">NIK</label>
+                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="NIK" required min="16">
+                                                    <div class="invalid-feedback">
+                                                        Maksimal 16 digit.
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom03">KJP (NOMOR BPJS)</label>
+                                                    <input type="number" class="form-control" id="validationCustom03" placeholder="KJP (Nomor BPJS)" maxlength="11" required>
+                                                    <div class="invalid-feedback">
+                                                        Maksimal 11 digit.
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom03">NIK</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="NIK" required min="16">
-                                                <div class="invalid-feedback">
-                                                    Maksimal 16 digit.
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom03">KJP (NOMOR BPJS)</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="KJP (Nomor BPJS)" maxlength="11" required>
-                                                <div class="invalid-feedback">
-                                                    Maksimal 11 digit.
-                                                </div>
-                                            </div>
-                                        </div>
 
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="validationCustom03">KOTA LAHIR</label>
@@ -142,24 +142,24 @@
                                                 <div class="invalid-feedback">Maksimal 15 digit.</div>
                                             </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom01">PROVINSI DOMISILI</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Provinsi Domisili" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan nama lengkap.
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom01">PROVINSI DOMISILI</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Provinsi Domisili" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan nama lengkap.
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="validationCustom01">KOTA DOMISILI</label>
-                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Kota Domisili" required>
-                                                <div class="invalid-feedback">
-                                                    Masukkan nama lengkap.
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="validationCustom01">KOTA DOMISILI</label>
+                                                    <input type="text" class="form-control" id="validationCustom03" placeholder="Kota Domisili" required>
+                                                    <div class="invalid-feedback">
+                                                        Masukkan nama lengkap.
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="validationCustom03">UNIT KERJA</label>
@@ -275,22 +275,22 @@
                                                 </div>
                                             </div>
 
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <button type="reset" class="btn btn-danger">Reset</button>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="reset" class="btn btn-danger">Reset</button>
+                                            </div>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                            <!-- Data Tab -->
-                            <div id="data-tab" class="tab-content">
-                            <h4>Data</h4>
-                            <p>Berikut adalah data yang tersedia:</p>
-                            <table class="table table-striped">
-                                <thead>
+                    <!-- Data Tab -->
+                    <div id="data-tab" class="tab-content">
+                        <h4>Data</h4>
+                        <p>Berikut adalah data yang tersedia:</p>
+                        <table class="table table-striped">
+                            <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama</th>
@@ -299,42 +299,42 @@
                                     <th scope="col">Jenis User</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>John Doe</td>
-                                        <td>628123456789</td>
-                                        <td>johndoe@example.com</td>
-                                        <td>Admin</td>
-                                        <td>
-                                            <button class="btn btn-primary btn-sm" title="Edit">
-                                                <i class="mdi mdi-file-document-edit-outline"></i> Edit
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="mdi mdi-delete-forever-outline"></i> Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jane Smith</td>
-                                        <td>628987654321</td>
-                                        <td>janesmith@example.com</td>
-                                        <td>Operator</td>
-                                        <td>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>John Doe</td>
+                                    <td>628123456789</td>
+                                    <td>johndoe@example.com</td>
+                                    <td>Admin</td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm" title="Edit">
+                                            <i class="mdi mdi-file-document-edit-outline"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm" title="Hapus">
+                                            <i class="mdi mdi-delete-forever-outline"></i> Hapus
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jane Smith</td>
+                                    <td>628987654321</td>
+                                    <td>janesmith@example.com</td>
+                                    <td>Operator</td>
+                                    <td>
                                         <div class="btn-group me-2 mb-2 mb-sm-0">
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-trash"></i></button>
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa dripicons-preview"></i></button>
-                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button> -->
-                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button> -->
-                                    </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-trash"></i></button>
+                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa dripicons-preview"></i></button>
+                                            <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button> -->
+                                            <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <?= $this->include('partials/footer') ?>

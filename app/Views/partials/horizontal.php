@@ -39,12 +39,12 @@
 
             <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item" id="page-header-search-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="search" class="icon-lg"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-search-dropdown">
-        
+
                     <form class="p-3">
                         <div class="form-group m-0">
                             <div class="input-group">
@@ -57,38 +57,6 @@
                 </div>
             </div>
 
-            <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language" height="16">
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
-                        <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                        <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                        <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                        <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                        <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
-                </div>
-            </div>
 
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item" id="mode-setting-btn">
@@ -99,7 +67,7 @@
 
             <div class="dropdown d-none d-lg-inline-block ms-1">
                 <button type="button" class="btn header-item"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="grid" class="icon-lg"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
@@ -151,7 +119,7 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon position-relative" id="page-header-notifications-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i data-feather="bell" class="icon-lg"></i>
                     <span class="badge bg-danger rounded-pill">5</span>
                 </button>
@@ -230,7 +198,7 @@
                     </div>
                     <div class="p-2 border-top d-grid">
                         <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                            <i class="mdi mdi-arrow-right-circle me-1"></i> <span><?= lang('Files.View_More') ?>..</span> 
+                            <i class="mdi mdi-arrow-right-circle me-1"></i> <span><?= lang('Files.View_More') ?>..</span>
                         </a>
                     </div>
                 </div>
@@ -244,7 +212,7 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item bg-soft-light border-start border-end" id="page-header-user-dropdown"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
@@ -258,11 +226,11 @@
                     <a class="dropdown-item" href="auth-login"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> <?= lang('Files.Logout') ?></a>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </header>
-    
+
 <div class="topnav">
     <div class="container-fluid">
         <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
@@ -279,7 +247,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button">
                             <i data-feather="briefcase"></i>
-                            <span data-key="t-components"><?= lang('Files.Elements') ?></span> 
+                            <span data-key="t-components"><?= lang('Files.Elements') ?></span>
                             <div class="arrow-down"></div>
                         </a>
 
@@ -316,7 +284,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-lg-4">
                                         <div>
                                             <div class="menu-title"><?= lang('Files.Extended') ?></div>
@@ -337,28 +305,31 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
-                            <i data-feather="grid"></i><span data-key="t-apps"><?= lang('Files.Apps') ?></span> <div class="arrow-down"></div>
+                            <i data-feather="grid"></i><span data-key="t-apps"><?= lang('Files.Apps') ?></span>
+                            <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                             <a href="apps-calendar" class="dropdown-item" data-key="t-calendar"><?= lang('Files.Calendar') ?></a>
                             <a href="apps-chat" class="dropdown-item" data-key="t-chat"><?= lang('Files.Chat') ?></a>
-                            
+
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
                                     role="button">
-                                    <span data-key="t-email"><?= lang('Files.Email') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-email"><?= lang('Files.Email') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-email">
                                     <a href="apps-email-inbox" class="dropdown-item" data-key="t-inbox"><?= lang('Files.Inbox') ?></a>
                                     <a href="apps-email-read" class="dropdown-item" data-key="t-read-email"><?= lang('Files.Read_Email') ?></a>
                                 </div>
                             </div>
-                            
+
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-invoice"
                                     role="button">
-                                    <span data-key="t-invoices"><?= lang('Files.Invoices') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-invoices"><?= lang('Files.Invoices') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-invoice">
                                     <a href="apps-invoices-list" class="dropdown-item" data-key="t-invoice-list"><?= lang('Files.Invoice_List') ?></a>
@@ -368,7 +339,8 @@
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-contact"
                                     role="button">
-                                    <span data-key="t-contacts"><?= lang('Files.Contacts') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-contacts"><?= lang('Files.Contacts') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-contact">
                                     <a href="apps-contacts-grid" class="dropdown-item" data-key="t-user-grid"><?= lang('Files.User_Grid') ?></a>
@@ -381,13 +353,15 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button">
-                            <i data-feather="box"></i><span data-key="t-components"><?= lang('Files.Components') ?></span> <div class="arrow-down"></div>
+                            <i data-feather="box"></i><span data-key="t-components"><?= lang('Files.Components') ?></span>
+                            <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-components">
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
                                     role="button">
-                                    <span data-key="t-forms"><?= lang('Files.Forms') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-forms"><?= lang('Files.Forms') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-form">
                                     <a href="form-elements" class="dropdown-item" data-key="t-form-elements"><?= lang('Files.Basic_Elements') ?></a>
@@ -402,7 +376,8 @@
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
                                     role="button">
-                                    <span data-key="t-tables"><?= lang('Files.Tables') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-tables"><?= lang('Files.Tables') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-table">
                                     <a href="tables-basic" class="dropdown-item" data-key="t-basic-tables"><?= lang('Files.Bootstrap_Basic') ?></a>
@@ -414,7 +389,8 @@
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-charts"
                                     role="button">
-                                    <span data-key="t-charts"><?= lang('Files.Charts') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-charts"><?= lang('Files.Charts') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-charts">
                                     <a href="charts-apex" class="dropdown-item" data-key="t-apex-charts"><?= lang('Files.Apexcharts') ?></a>
@@ -427,7 +403,8 @@
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-icons"
                                     role="button">
-                                    <span data-key="t-icons"><?= lang('Files.Icons') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-icons"><?= lang('Files.Icons') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-icons">
                                     <a href="icons-boxicons" class="dropdown-item" data-key="t-boxicons"><?= lang('Files.Boxicons') ?></a>
@@ -438,7 +415,8 @@
                             </div>
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-map" role="button">
-                                    <span data-key="t-maps"><?= lang('Files.Maps') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-maps"><?= lang('Files.Maps') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-map">
                                     <a href="maps-google" class="dropdown-item" data-key="t-g-maps"><?= lang('Files.Google') ?></a>
@@ -451,13 +429,15 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                            <i data-feather="file-text"></i><span data-key="t-extra-pages"><?= lang('Files.Extra_pages') ?></span> <div class="arrow-down"></div>
+                            <i data-feather="file-text"></i><span data-key="t-extra-pages"><?= lang('Files.Extra_pages') ?></span>
+                            <div class="arrow-down"></div>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-more">
 
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-auth" role="button">
-                                    <span data-key="t-authentication"><?= lang('Files.Authentication') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-authentication"><?= lang('Files.Authentication') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-auth">
                                     <a href="auth-login" class="dropdown-item" data-key="t-login"><?= lang('Files.Login') ?></a>
@@ -471,7 +451,8 @@
                             </div>
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-utility" role="button">
-                                    <span data-key="t-utility"><?= lang('Files.Utility') ?></span> <div class="arrow-down"></div>
+                                    <span data-key="t-utility"><?= lang('Files.Utility') ?></span>
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-utility">
                                     <a href="pages-starter" class="dropdown-item" data-key="t-starter-page"><?= lang('Files.Starter_Page') ?></a>

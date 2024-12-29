@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\JenisUser\Controllers;
+namespace Modules\Kota\Controllers;
 
 use App\Controllers\BaseController;
 
-class JenisUser extends BaseController
+class Kota extends BaseController
 {
-    protected $folder_directory = "Modules\\JenisUser\\Views\\";
+    protected $folder_directory = "Modules\\Kota\\Views\\";
 
     public function index()
     {
