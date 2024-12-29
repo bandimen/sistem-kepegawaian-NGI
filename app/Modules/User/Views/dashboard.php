@@ -26,7 +26,7 @@
 
                     <?= $page_title ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Welcome, <?= $userData['nama'] ?> as ...</strong>
+                        <strong>Welcome, <?= $userData['nama'] ?> as <?= $userData['nama_jenis_user'] ?></strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
