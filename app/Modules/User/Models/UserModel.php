@@ -3,6 +3,7 @@
 namespace Modules\User\Models;
 
 use CodeIgniter\Model;
+use Modules\Karyawan\Controllers\Karyawan;
 
 class UserModel extends Model
 {
@@ -20,6 +21,12 @@ class UserModel extends Model
             ->getRowArray();
 
         return $result;
+    }
+
+    // Relasi ke Karyawan
+    public function karyawan()
+    {
+        return $this->hasOne(Karyawan::class, 'user_id');
     }
 
     // public function getUser($userId)

@@ -62,7 +62,7 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="nama">Nama</label>
+                                                    <label class="form-label" for="nama">NAMA</label>
                                                     <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap Karyawan" name="nama">
                                                     <div class="invalid-feedback">
                                                         Masukkan nama lengkap.
@@ -86,7 +86,7 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label class="form-label" for="username">Username</label>
+                                                    <label class="form-label" for="username">USERNAME</label>
                                                     <input type="text" class="form-control" id="username" placeholder="Username" name="username">
                                                     <div class="invalid-feedback">
                                                         Masukkan username.
@@ -110,7 +110,7 @@
                                             <!-- ini harusnya pake input select2 -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="validationCustom03">TEMPAT LAHIR</label>
-                                                <input type="number" class="form-control" id="validationCustom03" placeholder="Tempat Lahir" required min="15">
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Tempat Lahir" required min="15">
                                                 <div class="invalid-feedback">Maksimal 15 digit.</div>
                                             </div>
                                             <div class="col-md-4 mb-3">
@@ -212,7 +212,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="validationCustom04">JUMLAH TANGGUNGAN</label>
-                                                    <input type="text" class="form-control" id="validationCustom04" placeholder="Jumlah Tanggungan" required>
+                                                    <input type="number" class="form-control" id="validationCustom04" placeholder="Jumlah Tanggungan" required>
                                                     <div class="invalid-feedback">-.</div>
                                                 </div>
                                             </div>
@@ -298,25 +298,27 @@
                     <!-- Data Tab -->
                     <div id="data-tab" class="tab-content">
                         <h4>Data</h4>
-                        <p>Berikut adalah data yang tersedia:</p>
+                        <p>Berikut adalah data karyawan PT. Nusantara Global Inovasi:</p>
                         <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">No. HP</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Jenis User</th>
+                                    <th scope="col">Divisi</th>
+                                    <th scope="col">Jabatan</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <?php if (!empty($users) && is_array($users)) : ?>
+                                <?php foreach ($users as $index => $user) : ?>
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>John Doe</td>
-                                    <td>628123456789</td>
-                                    <td>johndoe@example.com</td>
-                                    <td>Admin</td>
+                                    <th scope="row"><?= $index + 1 ?></th>
+                                    <td><?= esc($user['nama']) ?></td>
+                                    <td><?= esc($user['email']) ?></td>
+                                    <td><?= esc($user['divisi']) ?></td>
+                                    <td><?= esc($user['jabatan']) ?></td>
                                     <td>
                                         <button class="btn btn-primary btn-sm" title="Edit">
                                             <i class="mdi mdi-file-document-edit-outline"></i> Edit
@@ -326,25 +328,12 @@
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jane Smith</td>
-                                    <td>628987654321</td>
-                                    <td>janesmith@example.com</td>
-                                    <td>Operator</td>
-                                    <td>
-                                        <div class="btn-group me-2 mb-2 mb-sm-0">
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-edit"></i></button>
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-trash"></i></button>
-                                            <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa dripicons-preview"></i></button>
-                                            <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button> -->
-                                            <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button> -->
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
             <?= $this->include('partials/footer') ?>
