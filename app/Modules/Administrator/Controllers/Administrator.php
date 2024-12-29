@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\User\Controllers;
+namespace Modules\Administrator\Controllers;
 
 use App\Controllers\BaseController;
 use Modules\User\Models\UserModel;
 
-class User extends BaseController
+class Administrator extends BaseController
 {
-    protected $folder_directory = "Modules\\User\\Views\\";
+    protected $folder_directory = "Modules\\Administrator\\Views\\";
 
     protected $userModel;
     public function __construct()

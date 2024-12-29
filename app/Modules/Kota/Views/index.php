@@ -1,1 +1,0 @@
-<h1>Kota Index Page</h1>

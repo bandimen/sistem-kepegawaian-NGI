@@ -1,1 +1,0 @@
-<h1>StatusPernikahan Index Page</h1>
