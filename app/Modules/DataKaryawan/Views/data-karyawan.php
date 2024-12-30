@@ -54,7 +54,12 @@
                         <!-- Form Tab -->
                         <div id="form-tab" class="tab-content active">
                             <h4>Form</h4>
-                            <p>Isi form untuk data karyawan di sini:</p>
+                            <?php if (session()->getFlashdata('pesan')) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?= session()->getFlashdata('pesan'); ?>
+                                </div>
+                            <?php endif; ?>
+                            <p>Isi form untuk data karyawan baru di sini:</p>
 
                             <div class="card">
                                 <div class="card-body p-4">
@@ -291,6 +296,13 @@
                                                 </div>
                                             </div>
 
+                                            <!-- <div class="mb-3">
+                                                <label class="form-label" for="pas_foto">PAS FOTO</label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" id="pas_foto" name="pas_foto" required>
+                                                    <div class="invalid-feedback">Pas Foto diperlukan.</div>
+                                                </div>
+                                            </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_ktp">KTP</label>
                                                 <div class="input-group">
@@ -329,7 +341,7 @@
                                                     <input type="file" class="form-control" id="file_pendidikan" name="file_pendidikan" required>
                                                     <div class="invalid-feedback">File Pendidikan Terakhir diperlukan.</div>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
