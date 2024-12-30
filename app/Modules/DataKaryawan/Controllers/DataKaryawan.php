@@ -52,6 +52,13 @@ class DataKaryawan extends BaseController
         $sesi = session()->get();
         $userData = $this->userModel->where('id', $sesi['user_id'])->first();
         $provinsiData = $this->provinsiModel->getAllProvinsi();
+        $divisiData = $this->divisiModel->getAllDivisi();
+        $gradeData = $this->gradeModel->getAllGrade();
+        $jabatanData = $this->jabatanModel->getAllJabatan();
+        $statusKontrakData = $this->statusKontrakModel->getAllStatusKontrak();
+        $statusPernikahanData = $this->statusPernikahanModel->getAllStatusPernikahan();
+        $unitKerjaData = $this->unitKerjaModel->getAllUnitKerja();
+        $kotaData = $this->kotaModel->getAllKota();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
@@ -59,6 +66,13 @@ class DataKaryawan extends BaseController
             'userData' => $userData,
             'users' => $users,
             'provinsiData' => $provinsiData,
+            'divisiData' => $divisiData,
+            'gradeData' => $gradeData,
+            'kotaData' => $kotaData,
+            'unitKerjaData' => $unitKerjaData,
+            'statusPernikahanData' => $statusPernikahanData,
+            'statusKontrakData' => $statusKontrakData,
+            'jabatanData' => $jabatanData,
         ];
 
         return view($this->folder_directory . 'data-karyawan', $data);

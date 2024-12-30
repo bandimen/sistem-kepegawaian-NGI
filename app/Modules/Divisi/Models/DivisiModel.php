@@ -24,4 +24,9 @@ class DivisiModel extends Model
     {
         return $this->hasMany(Karyawan::class, 'divisi_id');
     }
+
+    public function getAllDivisi()
+    {
+        return $this->select('*')->where('is_deleted', 0)->findAll();
+    }
 }
