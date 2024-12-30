@@ -69,23 +69,24 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nama">NAMA</label>
-                                                    <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap Karyawan" name="nama" required pattern="[A-Za-z\s]+" maxlength="255">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nama') ? 'is-invalid' : '' ?> " id="nama" placeholder="Nama Lengkap Karyawan" name="nama" value="<?= old('nama') ?>" required pattern="[A-Za-z\s]+" maxlength="255">
                                                     <div class="invalid-feedback">
-                                                        Masukkan nama lengkap dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('nama') ? $validation->getError('nama') : 'Masukkan nama lengkap dengan benar.' ?>
                                                     </div>
+
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nip">NIP</label>
-                                                    <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip" required minlength="9" maxlength="18" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nip') ? 'is-invalid' : '' ?>" id="nip" placeholder="NIP" name="nip" value="<?= old('nip') ?>" required minlength="9" maxlength="18" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        Masukkan NIP dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('nip') ? $validation->getError('nip') : 'Masukkan NIP dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="npwp">NPWP</label>
-                                                    <input type="text" class="form-control" id="npwp" placeholder="NPWP" name="npwp" required minlength="15" maxlength="16" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('npwp') ? 'is-invalid' : '' ?>" id="npwp" placeholder="NPWP" name="npwp" value="<?= old('npwp') ?>" required minlength="15" maxlength="16" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        Masukkan NPWP dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('npwp') ? $validation->getError('npwp') : 'Masukkan NPWP dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -93,23 +94,23 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="username">USERNAME</label>
-                                                    <input type="text" class="form-control" id="username" placeholder="Username" name="username" required maxlength="30">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('username') ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>" name="username" required maxlength="30" pattern="[a-zA-Z0-9]+">
                                                     <div class="invalid-feedback">
-                                                        Masukkan username dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('username') ? $validation->getError('username') : 'Masukkan username dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nik">NIK</label>
-                                                    <input type="text" class="form-control" id="nik" placeholder="NIK" name="nik" required minlength="16" maxlength="16" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nik') ? 'is-invalid' : '' ?>" id="nik" placeholder="NIK" name="nik" value="<?= old('nik') ?>" required minlength="16" maxlength="16" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        Masukkan NIK dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('nik') ? $validation->getError('nik') : 'Masukkan NIK dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_bpjs">KJP (NOMOR BPJS)</label>
-                                                    <input type="text" class="form-control" id="no_bpjs" placeholder="KJP (Nomor BPJS)" name="no_bpjs" required minlength="12" maxlength="13" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_bpjs') ? 'is-invalid' : '' ?>" id="no_bpjs" placeholder="KJP (Nomor BPJS)" value="<?= old('no_bpjs') ?>" name="no_bpjs" required minlength="12" maxlength="13" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        Masukkan nomor BPJS dengan benar.
+                                                        <?= isset($validation) && $validation->hasError('no_bpjs') ? $validation->getError('no_bpjs') : 'Masukkan nomor BPJS dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -119,7 +120,7 @@
                                                 <select class="form-select" id="tempat_lahir" name="tempat_lahir" required>
                                                     <option value=""></option>
                                                     <?php foreach ($kotaData as $kota) : ?>
-                                                        <option value="<?= $kota['id']; ?>"><?= $kota['nama']; ?></option>
+                                                        <option value="<?= $kota['nama']; ?>"><?= $kota['nama']; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <div class="invalid-feedback">Silakan pilih tempat lahir.</div>
@@ -141,18 +142,24 @@
 
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_ktp">ALAMAT SESUAI KTP</label>
-                                                <textarea class="form-control" id="alamat_ktp" placeholder="Alamat Sesuai KTP" name="alamat_ktp" required maxlength="255"></textarea>
-                                                <div class="invalid-feedback">Masukkan alamat dengan benar.</div>
+                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_ktp') ? 'is-invalid' : '' ?>" id="alamat_ktp" placeholder="Alamat Sesuai KTP" name="alamat_ktp" value="<?= old('alamat_ktp') ?>" required maxlength="255"></textarea>
+                                                <div class="invalid-feedback">
+                                                    <?= isset($validation) && $validation->hasError('alamat_ktp') ? $validation->getError('alamat_ktp') : 'Masukkan alamat dengan benar.' ?>
+                                                </div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_domisili">ALAMAT DOMISILI</label>
-                                                <textarea class="form-control" id="alamat_domisili" placeholder="Alamat Domisili" name="alamat_domisili" required></textarea>
-                                                <div class="invalid-feedback">Masukkan alamat dengan benar.</div>
+                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_domisili') ? 'is-invalid' : '' ?>" id="alamat_domisili" placeholder="Alamat Domisili" value="<?= old('alamat_domisili') ?>" name="alamat_domisili" required></textarea>
+                                                <div class="invalid-feedback">
+                                                    <?= isset($validation) && $validation->hasError('alamat_domisili') ? $validation->getError('alamat_domisili') : 'Masukkan alamat dengan benar.' ?>
+                                                </div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_korespondensi">ALAMAT KORESPONDENSI</label>
-                                                <textarea class="form-control" id="alamat_korespondensi" placeholder="Alamat Korespondensi" name="alamat_korespondensi" required></textarea>
-                                                <div class="invalid-feedback">Masukkan alamat dengan benar.</div>
+                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? 'is-invalid' : '' ?>" id="alamat_korespondensi" placeholder="Alamat Korespondensi" value="<?= old('alamat_korespondensi') ?>" name="alamat_korespondensi" required></textarea>
+                                                <div class="invalid-feedback">
+                                                    <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? $validation->getError('alamat_korespondensi') : 'Masukkan alamat dengan benar.' ?>
+                                                </div>
                                             </div>
 
                                             <!-- ini pake select2 -->
@@ -263,36 +270,46 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="jml_tanggungan">JUMLAH TANGGUNGAN</label>
-                                                    <input type="number" class="form-control" id="jml_tanggungan" placeholder="Jumlah Tanggungan" name="jml_tanggungan" required min="0">
-                                                    <div class="invalid-feedback">Masukkan jumlah tanggungan yang dimiliki.</div>
+                                                    <input type="number" class="form-control <?= isset($validation) && $validation->hasError('jml_tanggungan') ? 'is-invalid' : '' ?>" id="jml_tanggungan" placeholder="Jumlah Tanggungan" value="<?= old('jml_tanggungan') ?>" name="jml_tanggungan" required min="0">
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('jml_tanggungan') ? $validation->getError('jml_tanggungan') : 'Masukkan jumlah tanggungan yang dimiliki.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="email_kantor">EMAIL KANTOR</label>
-                                                    <input type="email" class="form-control" id="email_kantor" placeholder="Email Kantor" name="email_kantor" required>
-                                                    <div class="invalid-feedback">Masukkan email kantor dengan benar.</div>
+                                                    <input type="email" class="form-control <?= isset($validation) && $validation->hasError('email_kantor') ? 'is-invalid' : '' ?>" id="email_kantor" placeholder="Email Kantor" value="<?= old('email_kantor') ?>" name="email_kantor" required>
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('email_kantor') ? $validation->getError('email_kantor') : 'Masukkan email kantor dengan benar.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="email_pribadi">EMAIL PRIBADI</label>
-                                                    <input type="email" class="form-control" id="email_pribadi" placeholder="Email Pribadi" name="email_pribadi" required>
-                                                    <div class="invalid-feedback">Masukkan email pribadi dengan benar.</div>
+                                                    <input type="email" class="form-control <?= isset($validation) && $validation->hasError('email_pribadi') ? 'is-invalid' : '' ?>" id="email_pribadi" placeholder="Email Pribadi" value="<?= old('email_pribadi') ?>" name="email_pribadi" required>
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('email_pribadi') ? $validation->getError('email_pribadi') : 'Masukkan email pribadi dengan benar.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_telp">NOMOR TELEPON</label>
-                                                    <input type="text" class="form-control" id="no_telp" placeholder="Nomor Telepon" name="no_telp" required maxlength="15" pattern="\d+">
-                                                    <div class="invalid-feedback">Masukkan nomor telepon dengan benar.</div>
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_telp') ? 'is-invalid' : '' ?>" id="no_telp" placeholder="Nomor Telepon" value="<?= old('no_telp') ?>" name="no_telp" required maxlength="15" pattern="\d+">
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('no_telp') ? $validation->getError('no_telp') : 'Masukkan nomor telepon dengan benar.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_rek">NOMOR REKENING</label>
-                                                    <input type="text" class="form-control" id="no_rek" placeholder="Nomor Rekening" name="no_rek" required maxlength="15" pattern="\d+">
-                                                    <div class="invalid-feedback">Masukkan nomor rekening dengan benar.</div>
+                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_rek') ? 'is-invalid' : '' ?>" id="no_rek" placeholder="Nomor Rekening" value="<?= old('no_rek') ?>" name="no_rek" required maxlength="15" pattern="\d+">
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('no_rek') ? $validation->getError('no_rek') : 'Masukkan nomor rekening dengan benar.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
 

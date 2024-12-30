@@ -61,6 +61,7 @@ class DataKaryawan extends BaseController
         $kotaData = $this->kotaModel->getAllKota();
 
         $data = [
+            'validation' => \Config\Services::validation(),
             'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
             'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Dashboard', 'li_2' => 'Data Karyawan']),
             'userData' => $userData,
@@ -74,6 +75,8 @@ class DataKaryawan extends BaseController
             'statusKontrakData' => $statusKontrakData,
             'jabatanData' => $jabatanData,
         ];
+        $data['validation'] = session()->get('validation');
+
 
         return view($this->folder_directory . 'data-karyawan', $data);
     }

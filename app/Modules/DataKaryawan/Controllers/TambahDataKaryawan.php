@@ -51,6 +51,188 @@ class TambahDataKaryawan extends BaseController
     $sesi = session()->get();
     $userData = $this->userModel->where('id', $sesi['user_id'])->first();
 
+    // Validasi input
+    if (!$this->validate([
+      'nama' => [
+        'rules' => 'required|alpha_space|max_length[255]',
+        'errors' => [
+          'required' => 'Nama tidak boleh kosong.',
+          'alpha_space' => 'Nama hanya boleh mengandung huruf dan spasi.',
+          'max_length' => 'Nama tidak boleh lebih dari 255 karakter.',
+        ],
+      ],
+      'nip' => [
+        'rules' => 'required|numeric|max_length[18]|is_unique[karyawan.nip]',
+        'errors' => [
+          'required' => 'NIP tidak boleh kosong.',
+          'numeric' => 'NIP hanya boleh berupa angka.',
+          'max_length' => 'NIP tidak boleh lebih dari 18 digit.',
+          'is_unique' => 'NIP sudah terdaftar.',
+        ],
+      ],
+      'npwp' => [
+        'rules' => 'required|numeric|max_length[16]|is_unique[karyawan.npwp]',
+        'errors' => [
+          'required' => 'NPWP tidak boleh kosong.',
+          'numeric' => 'NPWP hanya boleh berupa angka.',
+          'max_length' => 'NPWP tidak boleh lebih dari 16 digit.',
+          'is_unique' => 'NPWP sudah terdaftar.',
+        ],
+      ],
+      'username' => [
+        'rules' => 'required|alpha_numeric|max_length[30]',
+        'errors' => [
+          'required' => 'Username tidak boleh kosong.',
+          'alpha_numeric' => 'Username hanya boleh berupa huruf dan angka.',
+          'max_length' => 'Username tidak boleh lebih dari 30 karakter.',
+        ],
+      ],
+      'nik' => [
+        'rules' => 'required|numeric|max_length[16]|is_unique[karyawan.nik]',
+        'errors' => [
+          'required' => 'NIK tidak boleh kosong.',
+          'numeric' => 'NIK hanya boleh berupa angka.',
+          'max_length' => 'NIK tidak boleh lebih dari 16 digit.',
+          'is_unique' => 'NIK sudah terdaftar.',
+        ],
+      ],
+      'no_bpjs' => [
+        'rules' => 'required|numeric|max_length[13]|is_unique[karyawan.no_bpjs]',
+        'errors' => [
+          'required' => 'Nomor BPJS tidak boleh kosong.',
+          'numeric' => 'Nomor BPJS hanya boleh berupa angka.',
+          'max_length' => 'Nomor BPJS tidak boleh lebih dari 13 digit.',
+          'is_unique' => 'Nomor BPJS sudah terdaftar.',
+        ],
+      ],
+      'tempat_lahir' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Tempat lahir tidak boleh kosong.',
+        ],
+      ],
+      'tanggal_lahir' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Tanggal lahir tidak boleh kosong.',
+        ],
+      ],
+      'jenis_kelamin' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Jenis kelamin tidak boleh kosong.',
+        ],
+      ],
+      'alamat_ktp' => [
+        'rules' => 'required|max_length[255]',
+        'errors' => [
+          'required' => 'Alamat KTP tidak boleh kosong.',
+          'max_length' => 'Alamat KTP tidak boleh lebih dari 255 karakter.',
+        ],
+      ],
+      'alamat_domisili' => [
+        'rules' => 'required|max_length[255]',
+        'errors' => [
+          'required' => 'Alamat domisili tidak boleh kosong.',
+          'max_length' => 'Alamat domisili tidak boleh lebih dari 255 karakter.',
+        ],
+      ],
+      'alamat_korespondensi' => [
+        'rules' => 'required|max_length[255]',
+        'errors' => [
+          'required' => 'Alamat korespondensi tidak boleh kosong.',
+          'max_length' => 'Alamat korespondensi tidak boleh lebih dari 255 karakter.',
+        ],
+      ],
+      'provinsi' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Provinsi tidak boleh kosong.',
+        ],
+      ],
+      'kota' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Kota tidak boleh kosong.',
+        ],
+      ],
+      'unit_kerja' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Unit kerja tidak boleh kosong.',
+        ],
+      ],
+      'jabatan' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Jabatan tidak boleh kosong.',
+        ],
+      ],
+      'grade' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Grade tidak boleh kosong.',
+        ],
+      ],
+      'status_kontrak' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Status kontrak tidak boleh kosong.',
+        ],
+      ],
+      'tanggal_masuk' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Tanggal masuk tidak boleh kosong.',
+        ],
+      ],
+      'status_pernikahan' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Status pernikahan tidak boleh kosong.',
+        ],
+      ],
+      'jml_tanggungan' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Jumlah tanggungan tidak boleh kosong.',
+        ],
+      ],
+      'email_kantor' => [
+        'rules' => 'required|valid_email',
+        'errors' => [
+          'required' => 'Email kantor tidak boleh kosong.',
+          'valid_email' => 'Email kantor harus berupa alamat email yang valid.',
+        ],
+      ],
+      'email_pribadi' => [
+        'rules' => 'required|valid_email',
+        'errors' => [
+          'required' => 'Email pribadi tidak boleh kosong.',
+          'valid_email' => 'Email pribadi harus berupa alamat email yang valid.',
+        ],
+      ],
+      'no_telp' => [
+        'rules' => 'required|numeric|max_length[15]',
+        'errors' => [
+          'required' => 'Nomor telepon tidak boleh kosong.',
+          'numeric' => 'Nomor telepon hanya boleh berupa angka.',
+          'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+        ],
+      ],
+      'no_rek' => [
+        'rules' => 'required|numeric|max_length[15]',
+        'errors' => [
+          'required' => 'Nomor rekening tidak boleh kosong.',
+          'numeric' => 'Nomor rekening hanya boleh berupa angka.',
+          'max_length' => 'Nomor rekening tidak boleh lebih dari 15 digit.',
+        ],
+      ],
+    ])) {
+      return redirect()->to('/data-karyawan')->withInput()->with('validation', $this->validator);
+    }
+
+
     // field input
     $nama = $this->request->getVar('nama');
     $nip = $this->request->getVar('nip');
@@ -83,6 +265,8 @@ class TambahDataKaryawan extends BaseController
     // $file_npwp = $this->request->getVar('file_npwp');
     // $file_kk = $this->request->getVar('file_kk');
     // $file_pendidikan = $this->request->getVar('file_pendidikan');
+
+
 
     // tambah data user baru
     $this->userModel->insert([
