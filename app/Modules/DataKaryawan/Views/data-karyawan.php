@@ -396,26 +396,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (!empty($users) && is_array($users)) : ?>
-                                    <?php foreach ($users as $index => $user) : ?>
+                                <?php if (!empty($karyawans) && is_array($karyawans)) : ?>
+                                    <?php foreach ($karyawans as $index => $karyawan) : ?>
                                         <tr>
                                             <th scope="row"><?= $index + 1 ?></th>
-                                            <td><?= esc($user['nama']) ?></td>
-                                            <td><?= esc($user['email']) ?></td>
-                                            <td><?= esc($user['divisi']) ?></td>
-                                            <td><?= esc($user['jabatan']) ?></td>
+                                            <td><?= esc($karyawan['nama']) ?></td>
+                                            <td><?= esc($karyawan['user_email']) ?></td>
+                                            <td><?= esc($karyawan['divisi']) ?></td>
+                                            <td><?= esc($karyawan['jabatan']) ?></td>
                                             <td>
                                                 <button class="btn btn-primary btn-sm" title="Edit">
                                                     <i class="mdi mdi-file-document-edit-outline"></i> Edit
                                                 </button>
-                                                <button class="btn btn-danger btn-sm" title="Hapus">
+                                                <button
+                                                    class="btn btn-danger btn-sm delete-karyawan"
+                                                    data-id="<?= esc($karyawan['id']) ?>"
+                                                    title="Hapus">
                                                     <i class="mdi mdi-delete-forever-outline"></i> Hapus
                                                 </button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center">Tidak ada data karyawan.</td>
+                                    </tr>
                                 <?php endif; ?>
                             </tbody>
+
                         </table>
                     </div>
 
@@ -513,6 +521,63 @@
             theme: "bootstrap-5",
         });
     </script>
+
+    <!-- javascript untuk swal ketika delete karyawan -->
+    <script>
+        $(document).ready(function() {
+            $('.delete-karyawan').click(function(e) {
+                e.preventDefault();
+
+                const id = $(this).data('id');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Data beserta akun karyawan akan hilang!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '<?= base_url('data-karyawan/delete') ?>',
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: "Data beserta akun karyawan berhasil dihapus.",
+                                        icon: "success"
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: response.message || "Gagal menghapus data karyawan.",
+                                        icon: "error"
+                                    })
+                                }
+                            },
+                            error: function() {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: "An error occured while deleting the data.",
+                                    icon: "error"
+                                });
+                            }
+                        });
+
+                    }
+                });
+            });
+        });
+    </script>
+
 
     <!-- javascript untuk mengatur checkbox alamat -->
     <script>
