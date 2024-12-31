@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Karyawan\Models;
 
 use CodeIgniter\Model;
@@ -12,15 +13,15 @@ class KaryawanModel extends Model
     protected $table = 'karyawan';
     protected $primaryKey = 'id';
 
-    public $timestamps = true;
+    public $useTimestamps = true;
 
-    protected $fillable = [
+    protected $allowedFields = [
         'nama',
         'nip',
         'nik',
         'npwp',
         'no_bpjs',
-        'jenis_kelamin_id',
+        'jenis_kelamin',
         'tempat_lahir',
         'tanggal_lahir',
         'email_kantor',
@@ -46,6 +47,11 @@ class KaryawanModel extends Model
         'file_npwp',
         'file_kk',
         'file_pendidikan',
+        'created_at',
+        'created_by',
+        'updated_at',
+        'updated_by',
+        'is_deleted',
     ];
 
     // Relasi ke User

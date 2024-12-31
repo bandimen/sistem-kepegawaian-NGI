@@ -16,10 +16,17 @@ class DivisiModel extends Model
         'nama',
         'unit_kerja_id',
     ];
+    protected $allowedFields    = ['nama', 'unit_kerja_id', 'created_at', 'updated_at', 'created_by', 'updated_by', 'is_deleted'];
+
 
     // Relasi ke Karyawan
     public function karyawan()
     {
         return $this->hasMany(Karyawan::class, 'divisi_id');
+    }
+
+    public function getAllDivisi()
+    {
+        return $this->select('*')->where('is_deleted', 0)->findAll();
     }
 }
