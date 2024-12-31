@@ -31,7 +31,10 @@ class AuthCheck implements FilterInterface
         }
 
         // Jika user belum login dan mencoba mengakses halaman dashboard, redirect ke halaman login
-        if (!session()->get('is_logged_in') && $request->uri->getPath() === 'dashboard') {
+        if (!session()->has('is_logged_in') || !session()->get('is_logged_in') && $request->uri->getPath() === 'dashboard') {
+            return redirect()->to('/login');
+        }
+        if (!session()->get('is_logged_in') && $request->uri->getPath() === 'data-karyawan') {
             return redirect()->to('/login');
         }
     }

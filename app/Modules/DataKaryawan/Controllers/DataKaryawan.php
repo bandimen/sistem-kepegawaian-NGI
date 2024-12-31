@@ -41,6 +41,7 @@ class DataKaryawan extends BaseController
 
     public function show_data_karyawan()
     {
+
         $users = $this->userModel
             ->select('user.id, user.nama, user.email, divisi.nama as divisi, jabatan.nama as jabatan')
             ->join('karyawan', 'user.id = karyawan.user_id', 'left')

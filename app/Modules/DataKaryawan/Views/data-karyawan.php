@@ -154,6 +154,8 @@
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_domisili">ALAMAT DOMISILI</label>
                                                 <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_domisili') ? 'is-invalid' : '' ?>" id="alamat_domisili" placeholder="Alamat Domisili" value="<?= old('alamat_domisili') ?>" name="alamat_domisili" required></textarea>
+                                                <input type="checkbox" id="alamat_domisili_checkbox" name="alamat_domisili_checkbox" value="">
+                                                <label for="alamat_domisili_checkbox">Sama seperti alamat KTP</label><br>
                                                 <div class="invalid-feedback">
                                                     <?= isset($validation) && $validation->hasError('alamat_domisili') ? $validation->getError('alamat_domisili') : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
@@ -161,6 +163,8 @@
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_korespondensi">ALAMAT KORESPONDENSI</label>
                                                 <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? 'is-invalid' : '' ?>" id="alamat_korespondensi" placeholder="Alamat Korespondensi" value="<?= old('alamat_korespondensi') ?>" name="alamat_korespondensi" required></textarea>
+                                                <input type="checkbox" id="alamat_korespondensi_checkbox" name="alamat_korespondensi_checkbox" value="">
+                                                <label for="alamat_domisili_checkbox">Sama seperti alamat domisili</label><br>
                                                 <div class="invalid-feedback">
                                                     <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? $validation->getError('alamat_korespondensi') : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
@@ -507,6 +511,30 @@
         $('#tempat_lahir').select2({
             placeholder: "Pilih Tempat Lahir",
             theme: "bootstrap-5",
+        });
+    </script>
+
+    <!-- javascript untuk mengatur checkbox alamat -->
+    <script>
+        $(document).ready(function() {
+            $('#alamat_domisili_checkbox').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#alamat_domisili').val($('#alamat_ktp').val());
+                    $('#alamat_domisili').prop('readonly', true);
+                } else {
+                    $('#alamat_domisili').val('');
+                    $('#alamat_domisili').prop('readonly', false);
+                }
+            });
+            $('#alamat_korespondensi_checkbox').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#alamat_korespondensi').val($('#alamat_domisili').val());
+                    $('#alamat_korespondensi').prop('readonly', true);
+                } else {
+                    $('#alamat_korespondensi').val('');
+                    $('#alamat_korespondensi').prop('readonly', false);
+                }
+            });
         });
     </script>
 
