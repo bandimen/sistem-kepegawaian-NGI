@@ -1,8 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <?= $title_meta ?>
+
     <?= $this->include('partials/head-css') ?>
     <style>
         .tab-button {
@@ -33,16 +35,18 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
+
         <?= $this->include('partials/menu') ?>
 
+        <!-- ============================================================== -->
         <!-- Start right Content here -->
+        <!-- ============================================================== -->
         <div class="main-content">
+
             <div class="page-content">
                 <div class="container-fluid">
-                    <!-- Start page title -->
-                    <?= $page_title ?>
-                    <!-- End page title -->
 
+                    <?= $page_title ?>
                     <!-- Tabs Navigation -->
                     <div class="d-flex mb-4">
                         <button class="tab-button active" data-tab="form-tab">Form</button>
@@ -63,7 +67,7 @@
 
                             <div class="card">
                                 <div class="card-body p-4">
-                                    <form class="needs-validation formtambahkaryawan" novalidate action="/data-karyawan/tambah" method="post">
+                                    <form class="needs-validation formtambahkaryawan" novalidate action="/data-karyawan/tambah" method="post" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -313,52 +317,54 @@
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="mb-3">
+                                            <div class="mb-3">
                                                 <label class="form-label" for="pas_foto">PAS FOTO</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="pas_foto" name="pas_foto" required>
-                                                    <div class="invalid-feedback">Pas Foto diperlukan.</div>
+                                                    <input type="file" class="form-control  <?= isset($validation) && $validation->hasError('pas_foto') ? 'is-invalid' : '' ?>" id="pas_foto" name="pas_foto" required>
+                                                    <div class="invalid-feedback">
+                                                        <?= isset($validation) && $validation->hasError('pas_foto') ? $validation->getError('pas_foto') : 'Pas Foto diperlukan.' ?>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_ktp">KTP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="file_ktp" name="file_ktp" required>
-                                                    <div class="invalid-feedback">File KTP diperlukan.</div>
+                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_ktp') ? 'is-invalid' : '' ?>" id="file_ktp" name="file_ktp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_ktp') ? $validation->getError('file_ktp') : 'File KTP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_kjp">KJP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="file_kjp" name="file_kjp" required>
-                                                    <div class="invalid-feedback">File KJP diperlukan.</div>
+                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_kjp') ? 'is-invalid' : '' ?>" id="file_kjp" name="file_kjp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_kjp') ? $validation->getError('file_kjp') : 'File KJP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_npwp">NPWP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="file_npwp" name="file_npwp" required>
-                                                    <div class="invalid-feedback">File NPWP diperlukan.</div>
+                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_npwp') ? 'is-invalid' : '' ?>" id="file_npwp" name="file_npwp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_npwp') ? $validation->getError('file_npwp') : 'File NPWP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_kk">KARTU KELUARGA</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="file_kk" name="file_kk" required>
-                                                    <div class="invalid-feedback">File Kartu Keluarga diperlukan.</div>
+                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_kk') ? 'is-invalid' : '' ?>" id="file_kk" name="file_kk" required>
+                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_kk') ? $validation->getError('file_kk') : 'File KK diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_pendidikan">PENDIDIKAN TERAKHIR</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control" id="file_pendidikan" name="file_pendidikan" required>
-                                                    <div class="invalid-feedback">File Pendidikan Terakhir diperlukan.</div>
+                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_pendidikan') ? 'is-invalid' : '' ?>" id="file_pendidikan" name="file_pendidikan" required>
+                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_pendidikan') ? $validation->getError('file_pendidikan') : 'File ijazah pendidikan terakhir diperlukan.' ?></div>
                                                 </div>
-                                            </div> -->
+                                            </div>
 
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
@@ -409,11 +415,19 @@
                         </table>
                     </div>
 
+
                 </div>
+                <!-- container-fluid -->
             </div>
+            <!-- End Page-content -->
+
             <?= $this->include('partials/footer') ?>
         </div>
+        <!-- end main content-->
+
     </div>
+    <!-- END layout-wrapper -->
+
     <?= $this->include('partials/right-sidebar') ?>
 
     <?= $this->include('partials/vendor-scripts') ?>
@@ -435,7 +449,6 @@
         });
     </script>
 
-    <!-- select2 -->
     <script>
         $('#provinsi').select2({
             placeholder: "Pilih Provinsi",
@@ -471,6 +484,10 @@
             placeholder: "Pilih Divisi",
             theme: "bootstrap-5",
         });
+        $('#jenis_kelamin').select2({
+            placeholder: "Pilih Jenis Kelamin",
+            theme: "bootstrap-5",
+        });
         $('#jabatan').select2({
             placeholder: "Pilih Jabatan",
             theme: "bootstrap-5",
@@ -493,47 +510,6 @@
         });
     </script>
 
-    <!-- ajax ketika tombol submit ditekan maka akan melakukan validasi input -->
-    <!-- <script>
-        $(document).ready(function() {
-            $('.formtambahkaryawan').submit(function(e) {
-                e.preventDefault();
-
-                $.ajax({
-                    type: "post",
-                    url: $(this).attr('action'),
-                    data: $(this).serialize(),
-                    dataType: "json",
-                    beforeSend: function() {
-                        $('.btnsubmit').attr('disabled', true);
-                        $('.btnsubmit').html('<i class="fa fa-spin fa-spinner"></i>');
-                    },
-                    complete: function() {
-                        $('.btnsubmit').removeAttr('disabled');
-                        $('.btnsubmit').html('Submit');
-                    },
-                    success: function(response) {
-                        if (response.error) {
-                            if (response.error.nama) {
-                                $('#nama').addClass('is-invalid');
-                                $('.errorNama').html(response.error.nama);
-                            } else {
-                                $('#nama').removeClass('is-invalid');
-                                $('.errorNama').html('');
-                            }
-                        } else if (response.success) {
-                            alert(response.success);
-                            location.reload(); // Reload halaman jika berhasil
-                        }
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
-                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                    }
-                });
-            });
-        });
-    </script> -->
-
     <!-- apexcharts -->
     <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
@@ -545,10 +521,8 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
-
     <!-- form validation -->
     <script src="assets/js/pages/form-validation.init.js"></script>
-    <script src="assets/js/app.js"></script>
 
 </body>
 

@@ -80,11 +80,12 @@ class TambahDataKaryawan extends BaseController
         ],
       ],
       'username' => [
-        'rules' => 'required|alpha_numeric|max_length[30]',
+        'rules' => 'required|alpha_numeric|max_length[30]|is_unique[user.username]',
         'errors' => [
           'required' => 'Username tidak boleh kosong.',
           'alpha_numeric' => 'Username hanya boleh berupa huruf dan angka.',
           'max_length' => 'Username tidak boleh lebih dari 30 karakter.',
+          'is_unique' => 'Username sudah terdaftar.',
         ],
       ],
       'nik' => [
@@ -199,33 +200,91 @@ class TambahDataKaryawan extends BaseController
         ],
       ],
       'email_kantor' => [
-        'rules' => 'required|valid_email',
+        'rules' => 'required|valid_email|is_unique[karyawan.email_kantor]',
         'errors' => [
           'required' => 'Email kantor tidak boleh kosong.',
           'valid_email' => 'Email kantor harus berupa alamat email yang valid.',
+          'is_unique' => 'Emai kantor sudah terdaftar.',
         ],
       ],
       'email_pribadi' => [
-        'rules' => 'required|valid_email',
+        'rules' => 'required|valid_email|is_unique[karyawan.email_pribadi]',
         'errors' => [
           'required' => 'Email pribadi tidak boleh kosong.',
           'valid_email' => 'Email pribadi harus berupa alamat email yang valid.',
+          'is_unique' => 'Emai kantor sudah terdaftar.',
         ],
       ],
       'no_telp' => [
-        'rules' => 'required|numeric|max_length[15]',
+        'rules' => 'required|numeric|max_length[15]|is_unique[karyawan.no_telp]',
         'errors' => [
           'required' => 'Nomor telepon tidak boleh kosong.',
           'numeric' => 'Nomor telepon hanya boleh berupa angka.',
           'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+          'is_unique' => 'Nomor telepon sudah terdaftar.',
         ],
       ],
       'no_rek' => [
-        'rules' => 'required|numeric|max_length[15]',
+        'rules' => 'required|numeric|max_length[15]|is_unique[karyawan.no_rek]',
         'errors' => [
           'required' => 'Nomor rekening tidak boleh kosong.',
           'numeric' => 'Nomor rekening hanya boleh berupa angka.',
           'max_length' => 'Nomor rekening tidak boleh lebih dari 15 digit.',
+          'is_unique' => 'Nomor rekening sudah terdaftar.',
+        ],
+      ],
+      'pas_foto' => [
+        'rules' => 'uploaded[pas_foto]|max_size[pas_foto,2048]|mime_in[pas_foto,application/pdf]|ext_in[pas_foto,pdf]',
+        'errors' => [
+          'uploaded' => 'File pas foto wajib diunggah',
+          'max_size' => 'Ukuran file pas foto tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file pas foto harus berupa .pdf',
+        ],
+      ],
+      'file_ktp' => [
+        'rules' => 'uploaded[file_ktp]|max_size[file_ktp,2048]|mime_in[file_ktp,application/pdf]|ext_in[file_ktp,pdf]',
+        'errors' => [
+          'uploaded' => 'File KTP wajib diunggah',
+          'max_size' => 'Ukuran file KTP tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file KTP harus berupa .pdf',
+        ],
+      ],
+      'file_kjp' => [
+        'rules' => 'uploaded[file_kjp]|max_size[file_kjp,2048]|mime_in[file_kjp,application/pdf]|ext_in[file_kjp,pdf]',
+        'errors' => [
+          'uploaded' => 'File KJP wajib diunggah',
+          'max_size' => 'Ukuran file KJP tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file KJP harus berupa .pdf',
+        ],
+      ],
+      'file_npwp' => [
+        'rules' => 'uploaded[file_npwp]|max_size[file_npwp,2048]|mime_in[file_npwp,application/pdf]|ext_in[file_npwp,pdf]',
+        'errors' => [
+          'uploaded' => 'File NPWP wajib diunggah',
+          'max_size' => 'Ukuran file NPWP tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file NPWP harus berupa .pdf',
+        ],
+      ],
+      'file_kk' => [
+        'rules' => 'uploaded[file_kk]|max_size[file_kk,2048]|mime_in[file_kk,application/pdf]|ext_in[file_kk,pdf]',
+        'errors' => [
+          'uploaded' => 'File KK wajib diunggah',
+          'max_size' => 'Ukuran file KK tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file KK harus berupa .pdf',
+        ],
+      ],
+      'file_pendidikan' => [
+        'rules' => 'uploaded[file_pendidikan]|max_size[file_pendidikan,2048]|mime_in[file_pendidikan,application/pdf]|ext_in[file_pendidikan,pdf]',
+        'errors' => [
+          'uploaded' => 'File ijazah pendidikan terakhir wajib diunggah',
+          'max_size' => 'Ukuran file ijazah pendidikan terakhir tidak boleh lebih dari 2MB',
+          'mime_in' => 'Hanya file dengan format PDF yang diizinkan',
+          'ext_in' => 'Ekstensi file ijazah pendidikan terakhir harus berupa .pdf',
         ],
       ],
     ])) {
@@ -259,12 +318,30 @@ class TambahDataKaryawan extends BaseController
     $email_pribadi = $this->request->getVar('email_pribadi');
     $no_telp = $this->request->getVar('no_telp');
     $no_rek = $this->request->getVar('no_rek');
-    // $pas_foto = $this->request->getVar('pas_foto');
-    // $file_ktp = $this->request->getVar('file_ktp');
-    // $file_bpjs = $this->request->getVar('file_bpjs');
-    // $file_npwp = $this->request->getVar('file_npwp');
-    // $file_kk = $this->request->getVar('file_kk');
-    // $file_pendidikan = $this->request->getVar('file_pendidikan');
+
+    $pas_foto = $this->request->getFile('pas_foto');
+    $nama_pas_foto = $pas_foto->getRandomName();
+    $pas_foto->move(WRITEPATH . '../public/uploads/', $nama_pas_foto);
+
+    $file_ktp = $this->request->getFile('file_ktp');
+    $nama_file_ktp = $file_ktp->getRandomName();
+    $file_ktp->move(WRITEPATH . '../public/uploads/', $nama_file_ktp);
+
+    $file_bpjs = $this->request->getFile('file_kjp');
+    $nama_file_bpjs = $file_bpjs->getRandomName();
+    $file_bpjs->move(WRITEPATH . '../public/uploads/', $nama_file_bpjs);
+
+    $file_npwp = $this->request->getFile('file_npwp');
+    $nama_file_npwp = $file_npwp->getRandomName();
+    $file_npwp->move(WRITEPATH . '../public/uploads/', $nama_file_npwp);
+
+    $file_kk = $this->request->getFile('file_kk');
+    $nama_file_kk = $file_kk->getRandomName();
+    $file_kk->move(WRITEPATH . '../public/uploads/', $nama_file_kk);
+
+    $file_pendidikan = $this->request->getFile('file_pendidikan');
+    $nama_file_pendidikan = $file_pendidikan->getRandomName();
+    $file_pendidikan->move(WRITEPATH . '../public/uploads/', $nama_file_pendidikan);
 
 
 
@@ -308,12 +385,12 @@ class TambahDataKaryawan extends BaseController
       'divisi_id' => $divisi,
       'jabatan_id' => $jabatan,
       'tanggal_masuk' => $tanggal_masuk,
-      // 'pas_foto' => $pas_foto,
-      // 'file_ktp' => $file_ktp,
-      // 'file_bpjs' => $file_bpjs,
-      // 'file_npwp' => $file_npwp,
-      // 'file_kk' => $file_kk,
-      // 'file_pendidikan' => $file_pendidikan,
+      'pas_foto' => $nama_pas_foto,
+      'file_ktp' => $nama_file_ktp,
+      'file_bpjs' => $nama_file_bpjs,
+      'file_npwp' => $nama_file_npwp,
+      'file_kk' => $nama_file_kk,
+      'file_pendidikan' => $nama_file_pendidikan,
       'created_by' => $userData['nama'],
       'updated_by' => $userData['nama'],
     ]);
