@@ -48,9 +48,9 @@
 
                     <?= $page_title ?>
                     <!-- Tabs Navigation -->
-                    <div class="d-flex mb-4">
-                        <button class="tab-button active" data-tab="form-tab">Form</button>
-                        <button class="tab-button" data-tab="data-tab">Data</button>
+                    <div>
+                         <button class="tab-button active" data-tab="form-tab">Form</button>
+                         <button class="tab-button disabled" data-tab="data-tab" disabled>Data</button>
                     </div>
 
                     <!-- Tabs Content -->
@@ -63,11 +63,11 @@
                                     <?= session()->getFlashdata('pesan'); ?>
                                 </div>
                             <?php endif; ?>
-                            <p>Isi form untuk data karyawan baru di sini:</p>
+                            <p>Isi form untuk edit data karyawan baru di sini:</p>
 
                             <div class="card">
                                 <div class="card-body p-4">
-                                    <form class="needs-validation formtambahkaryawan" novalidate action="/data-karyawan/tambah" method="post" enctype="multipart/form-data">
+                                    <form class="needs-validation formEDITkaryawan" novalidate action="/edit-data-karyawan/edit" method="post" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -366,8 +366,47 @@
                                                 </div>
                                             </div>
 
+                                             <!-- Data Tab -->
+                                             <div id="data-tab" class="tab-content">
+                                             <h4>Data</h4>
+                                             <p>Berikut adalah data karyawan PT. Nusantara Global Inovasi:</p>
+                                             <table class="table table-striped">
+                                                  <thead>
+                                                       <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Nama</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Divisi</th>
+                                                            <th scope="col">Jabatan</th>
+                                                            <th scope="col">Aksi</th>
+                                                       </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                       <?php if (!empty($users) && is_array($users)) : ?>
+                                                            <?php foreach ($users as $index => $user) : ?>
+                                                                 <tr>
+                                                                 <th scope="row"><?= $index + 1 ?></th>
+                                                                 <td><?= esc($user['nama']) ?></td>
+                                                                 <td><?= esc($user['email']) ?></td>
+                                                                 <td><?= esc($user['divisi']) ?></td>
+                                                                 <td><?= esc($user['jabatan']) ?></td>
+                                                                 <td>
+                                                                      <button class="btn btn-primary btn-sm" title="Edit" onclick="window.location.href='/edit-data-karyawan'">
+                                                                           <i class="mdi mdi-file-document-edit-outline"></i> Edit
+                                                                      </button>
+                                                                      <button class="btn btn-danger btn-sm" title="Hapus">
+                                                                           <i class="mdi mdi-delete-forever-outline"></i> Hapus
+                                                                      </button>
+                                                                 </td>
+                                                                 </tr>
+                                                            <?php endforeach; ?>
+                                                       <?php endif; ?>
+                                                  </tbody>
+                                             </table>
+                                             </div>
+
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary btnsubmit">Submit</button>
+                                                <button type="submit" class="btn btn-primary btnsubmit">Update</button>
                                                 <button type="reset" class="btn btn-danger">Reset</button>
                                             </div>
                                         </div>
@@ -375,47 +414,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Data Tab -->
-                    <div id="data-tab" class="tab-content">
-                        <h4>Data</h4>
-                        <p>Berikut adalah data karyawan PT. Nusantara Global Inovasi:</p>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Divisi</th>
-                                    <th scope="col">Jabatan</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if (!empty($users) && is_array($users)) : ?>
-                                    <?php foreach ($users as $index => $user) : ?>
-                                        <tr>
-                                            <th scope="row"><?= $index + 1 ?></th>
-                                            <td><?= esc($user['nama']) ?></td>
-                                            <td><?= esc($user['email']) ?></td>
-                                            <td><?= esc($user['divisi']) ?></td>
-                                            <td><?= esc($user['jabatan']) ?></td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm" title="Edit" onclick="window.location.href='/edit-data-karyawan'">
-                                                    <i class="mdi mdi-file-document-edit-outline"></i> Edit
-                                                </button>
-                                                <button class="btn btn-danger btn-sm" title="Hapus">
-                                                    <i class="mdi mdi-delete-forever-outline"></i> Hapus
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </tbody>
-                        </table>
-                    </div>
-
-
                 </div>
                 <!-- container-fluid -->
             </div>
@@ -431,23 +429,21 @@
     <?= $this->include('partials/right-sidebar') ?>
 
     <?= $this->include('partials/vendor-scripts') ?>
-    <!-- JavaScript untuk Navigasi Tab -->
-    <script>
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
+     <!-- JavaScript untuk Navigasi Tab -->
+     <script>
+     const tabButtons = document.querySelectorAll('.tab-button:not(.disabled)'); 
+     const tabContents = document.querySelectorAll('.tab-content');
 
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Reset all active states
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
+     tabButtons.forEach(button => {
+          button.addEventListener('click', () => {
+               tabButtons.forEach(btn => btn.classList.remove('active'));
+               tabContents.forEach(content => content.classList.remove('active'));
 
-                // Activate the clicked tab and corresponding content
-                button.classList.add('active');
-                document.getElementById(button.dataset.tab).classList.add('active');
-            });
-        });
-    </script>
+               button.classList.add('active');
+               document.getElementById(button.dataset.tab).classList.add('active');
+          });
+     });
+     </script>
 
     <script>
         $('#provinsi').select2({
@@ -516,11 +512,13 @@
     <!-- Plugins js-->
     <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+
     <!-- dashboard init -->
     <script src="assets/js/pages/dashboard.init.js"></script>
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+
     <!-- form validation -->
     <script src="assets/js/pages/form-validation.init.js"></script>
 

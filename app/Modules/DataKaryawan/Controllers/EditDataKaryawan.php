@@ -7,7 +7,7 @@ use Modules\User\Models\UserModel;
 use Modules\Kota\Models\KotaModel;
 use Modules\Karyawan\Models\KaryawanModel;
 
-class TambahDataKaryawan extends BaseController
+class EditDataKaryawan extends BaseController
 {
   protected $folder_directory = "Modules\\DataKaryawan\\Views\\";
 
@@ -45,7 +45,7 @@ class TambahDataKaryawan extends BaseController
     return $this->response->setJSON($response);
   }
 
-  public function tambah()
+  public function edit()
   {
     // entitas yang login
     $sesi = session()->get();
@@ -288,11 +288,9 @@ class TambahDataKaryawan extends BaseController
         ],
       ],
     ])) {
-      return redirect()->to('/data-karyawan')->withInput()->with('validation', $this->validator);
+      return redirect()->to('/edit-data-karyawan')->withInput()->with('validation', $this->validator);
     }
 
-
-    // field input
     $nama = $this->request->getVar('nama');
     $nip = $this->request->getVar('nip');
     $npwp = $this->request->getVar('npwp');
@@ -343,10 +341,7 @@ class TambahDataKaryawan extends BaseController
     $nama_file_pendidikan = $file_pendidikan->getRandomName();
     $file_pendidikan->move(WRITEPATH . '../public/uploads/', $nama_file_pendidikan);
 
-
-
-    // tambah data user baru
-    $this->userModel->insert([
+    $this->userModel->update([
       'nama' => $nama,
       'username' => $username,
       'email' => $email_kantor,
@@ -356,9 +351,8 @@ class TambahDataKaryawan extends BaseController
       'updated_by' => $userData['nama'],
     ]);
 
-    $userId = $this->userModel->insertID();
+    $userId = $this->userModel->updateID();
 
-    // tambah data karyawan baru
     $this->karyawanModel->save([
       'nama' => $nama,
       'nip' => $nip,
@@ -395,7 +389,12 @@ class TambahDataKaryawan extends BaseController
       'updated_by' => $userData['nama'],
     ]);
 
-    session()->setFlashdata('pesan', 'Data karyawan berhasil ditambahkan.');
-    return redirect()->to('/data-karyawan');
-  }
-}
+          if ($this->karyawanModel->update($userData['id'])) {
+               session()->setFlashdata('success', 'Data karyawan berhasil diperbarui!');
+               return redirect()->to('/edit-data-karyawan');
+          } else {
+               session()->setFlashdata('error', 'Terjadi kesalahan saat memperbarui data karyawan.');
+               return redirect()->to('/edit-data-karyawan')->withInput();
+          }
+     }
+} 
