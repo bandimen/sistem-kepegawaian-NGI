@@ -44,7 +44,6 @@ class DataKaryawan extends BaseController
 
     public function show_data_karyawan()
     {
-
         $karyawans = $this->karyawanModel->getAllKaryawan();
 
         $sesi = session()->get();

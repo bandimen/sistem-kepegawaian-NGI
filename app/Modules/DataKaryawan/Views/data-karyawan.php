@@ -121,7 +121,7 @@
                                             <!-- ini harusnya pake input select2 -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="tempat_lahir">TEMPAT LAHIR</label>
-                                                <select class="form-select" id="tempat_lahir" name="tempat_lahir" required>
+                                                <select class="form-select select2" id="tempat_lahir" name="tempat_lahir" required>
                                                     <option value=""></option>
                                                     <?php foreach ($kotaData as $kota) : ?>
                                                         <option value="<?= $kota['nama']; ?>"><?= $kota['nama']; ?></option>
@@ -136,7 +136,7 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="jenis_kelamin">JENIS KELAMIN</label>
-                                                <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
+                                                <select class="form-select select2" name="jenis_kelamin" id="jenis_kelamin" required>
                                                     <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                     <option value="Laki-Laki">Laki-Laki</option>
@@ -174,7 +174,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="provinsi">PILIH PROVINSI DOMISILI</label>
-                                                    <select class="form-select" id="provinsi" name="provinsi" required>
+                                                    <select class="form-select select2" id="provinsi" name="provinsi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($provinsiData as $provinsi) : ?>
                                                             <option value="<?= $provinsi['kode']; ?>"><?= $provinsi['nama']; ?></option>
@@ -187,7 +187,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="kota">PILIH KAB/KOTA DOMISILI</label>
-                                                    <select class="form-select" id="kota" name="kota" required>
+                                                    <select class="form-select select2" id="kota" name="kota" required>
                                                         <option value=""></option>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih kab/kota domisili.</div>
@@ -197,7 +197,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="unit_kerja">PILIH UNIT KERJA</label>
-                                                    <select class="form-select" id="unit_kerja" name="unit_kerja" required>
+                                                    <select class="form-select select2" id="unit_kerja" name="unit_kerja" required>
                                                         <option value=""></option>
                                                         <?php foreach ($unitKerjaData as $unitKerja) : ?>
                                                             <option value="<?= $unitKerja['id']; ?>"><?= $unitKerja['nama']; ?></option>
@@ -210,7 +210,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="divisi">PILIH DIVISI</label>
-                                                    <select class="form-select" id="divisi" name="divisi" required>
+                                                    <select class="form-select select2" id="divisi" name="divisi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($divisiData as $divisi) : ?>
                                                             <option value="<?= $divisi['id']; ?>"><?= $divisi['nama']; ?></option>
@@ -223,7 +223,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="jabatan">PILIH JABATAN</label>
-                                                    <select class="form-select" id="jabatan" name="jabatan" required>
+                                                    <select class="form-select select2" id="jabatan" name="jabatan" required>
                                                         <option value=""></option>
                                                         <?php foreach ($jabatanData as $jabatan) : ?>
                                                             <option value="<?= $jabatan['id']; ?>"><?= $jabatan['nama']; ?></option>
@@ -236,7 +236,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="grade">PILIH GRADE</label>
-                                                    <select class="form-select" id="grade" name="grade" required>
+                                                    <select class="form-select select2" id="grade" name="grade" required>
                                                         <option value=""></option>
                                                         <?php foreach ($gradeData as $grade) : ?>
                                                             <option value="<?= $grade['id']; ?>"><?= $grade['kategori']; ?></option>
@@ -248,7 +248,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_kontrak">PILIH STATUS KONTRAK</label>
-                                                    <select class="form-select" id="status_kontrak" name="status_kontrak" required>
+                                                    <select class="form-select select2" id="status_kontrak" name="status_kontrak" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusKontrakData as $statusKontrak) : ?>
                                                             <option value="<?= $statusKontrak['id']; ?>"><?= $statusKontrak['status']; ?></option>
@@ -266,7 +266,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_pernikahan">PILIH STATUS PERNIKAHAN</label>
-                                                    <select class="form-select" id="status_pernikahan" name="status_pernikahan" required>
+                                                    <select class="form-select select2" id="status_pernikahan" name="status_pernikahan" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusPernikahanData as $statusPernikahan) : ?>
                                                             <option value="<?= $statusPernikahan['id']; ?>"><?= $statusPernikahan['status']; ?></option>
@@ -519,6 +519,10 @@
         $('#tempat_lahir').select2({
             placeholder: "Pilih Tempat Lahir",
             theme: "bootstrap-5",
+        });
+        $('button[type="reset"]').click(function() {
+            // Reset semua Select2
+            $('.select2').val(null).trigger('change');
         });
     </script>
 

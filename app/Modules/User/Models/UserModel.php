@@ -23,6 +23,14 @@ class UserModel extends Model
         return $result;
     }
 
+    public function getAllUser()
+    {
+        return $this->select('user.*, divisi.nama AS divisi')
+            ->join('divisi', 'user.divisi_id = divisi.id')
+            ->where('user.is_deleted', 0)
+            ->get()->getResultArray();
+    }
+
     // Relasi ke Karyawan
     public function karyawan()
     {
