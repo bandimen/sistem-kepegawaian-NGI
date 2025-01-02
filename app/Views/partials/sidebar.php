@@ -36,6 +36,7 @@
                     </ul>
                 </li>
 
+
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="grid"></i>
@@ -51,7 +52,16 @@
                     </ul>
                 </li>
 
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="sliders"></i>
+                        <span data-key="t-tables"><?= 'Manajemen Data' ?></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="manajemen-provinsi" data-key="t-manajemen-provinsi"><?= 'Manajemen Provinsi' ?></a></li>
+                        <li><a href="manajemen-kota" data-key="t-manajemen-kota"><?= 'Manajemen Kota' ?></a></li>
+                    </ul>
+                </li>
 
 
             </ul>
