@@ -23,24 +23,22 @@ class UserModel extends Model
         return $result;
     }
 
+    public function getAllUser()
+    {
+        return $this->select('user.*, divisi.nama AS divisi')
+            ->join('divisi', 'user.divisi_id = divisi.id')
+            ->where('user.is_deleted', 0)
+            ->get()->getResultArray();
+    }
+
     // Relasi ke Karyawan
     public function karyawan()
     {
         return $this->hasOne(Karyawan::class, 'user_id');
     }
 
-    // public function getUser($userId)
-    // {
-    //     $result = $this->db->table('user')
-    //         ->select('user.*, grade.kategori AS grade, status_kontrak.status AS status_kontrak, status_pernikahan.status AS status_pernikahan')
-    //         ->join('grade', 'grade.id = user.grade_id')
-    //         ->join('status_kontrak', 'status_kontrak.id = user.status_kontrak_id')
-    //         ->join('status_pernikahan', 'status_pernikahan.id = user.status_pernikahan_id')
-    //         ->where('user.id', $userId)
-    //         ->get()
-    //         ->getRowArray();
-
-    //     return $result;
-    // }
-
+    public function deleteUser($id)
+    {
+        return $this->update($id, ['is_deleted' => 1]);
+    }
 }

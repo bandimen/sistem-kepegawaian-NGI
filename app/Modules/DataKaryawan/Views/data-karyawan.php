@@ -121,7 +121,7 @@
                                             <!-- ini harusnya pake input select2 -->
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="tempat_lahir">TEMPAT LAHIR</label>
-                                                <select class="form-select" id="tempat_lahir" name="tempat_lahir" required>
+                                                <select class="form-select select2" id="tempat_lahir" name="tempat_lahir" required>
                                                     <option value=""></option>
                                                     <?php foreach ($kotaData as $kota) : ?>
                                                         <option value="<?= $kota['nama']; ?>"><?= $kota['nama']; ?></option>
@@ -136,7 +136,7 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="jenis_kelamin">JENIS KELAMIN</label>
-                                                <select class="form-select" name="jenis_kelamin" id="jenis_kelamin" required>
+                                                <select class="form-select select2" name="jenis_kelamin" id="jenis_kelamin" required>
                                                     <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                     <option value="Laki-Laki">Laki-Laki</option>
@@ -154,6 +154,8 @@
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_domisili">ALAMAT DOMISILI</label>
                                                 <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_domisili') ? 'is-invalid' : '' ?>" id="alamat_domisili" placeholder="Alamat Domisili" value="<?= old('alamat_domisili') ?>" name="alamat_domisili" required></textarea>
+                                                <input type="checkbox" id="alamat_domisili_checkbox" name="alamat_domisili_checkbox" value="">
+                                                <label for="alamat_domisili_checkbox">Sama seperti alamat KTP</label><br>
                                                 <div class="invalid-feedback">
                                                     <?= isset($validation) && $validation->hasError('alamat_domisili') ? $validation->getError('alamat_domisili') : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
@@ -161,6 +163,8 @@
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_korespondensi">ALAMAT KORESPONDENSI</label>
                                                 <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? 'is-invalid' : '' ?>" id="alamat_korespondensi" placeholder="Alamat Korespondensi" value="<?= old('alamat_korespondensi') ?>" name="alamat_korespondensi" required></textarea>
+                                                <input type="checkbox" id="alamat_korespondensi_checkbox" name="alamat_korespondensi_checkbox" value="">
+                                                <label for="alamat_domisili_checkbox">Sama seperti alamat domisili</label><br>
                                                 <div class="invalid-feedback">
                                                     <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? $validation->getError('alamat_korespondensi') : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
@@ -170,7 +174,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="provinsi">PILIH PROVINSI DOMISILI</label>
-                                                    <select class="form-select" id="provinsi" name="provinsi" required>
+                                                    <select class="form-select select2" id="provinsi" name="provinsi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($provinsiData as $provinsi) : ?>
                                                             <option value="<?= $provinsi['kode']; ?>"><?= $provinsi['nama']; ?></option>
@@ -183,7 +187,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="kota">PILIH KAB/KOTA DOMISILI</label>
-                                                    <select class="form-select" id="kota" name="kota" required>
+                                                    <select class="form-select select2" id="kota" name="kota" required>
                                                         <option value=""></option>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih kab/kota domisili.</div>
@@ -193,7 +197,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="unit_kerja">PILIH UNIT KERJA</label>
-                                                    <select class="form-select" id="unit_kerja" name="unit_kerja" required>
+                                                    <select class="form-select select2" id="unit_kerja" name="unit_kerja" required>
                                                         <option value=""></option>
                                                         <?php foreach ($unitKerjaData as $unitKerja) : ?>
                                                             <option value="<?= $unitKerja['id']; ?>"><?= $unitKerja['nama']; ?></option>
@@ -206,7 +210,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="divisi">PILIH DIVISI</label>
-                                                    <select class="form-select" id="divisi" name="divisi" required>
+                                                    <select class="form-select select2" id="divisi" name="divisi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($divisiData as $divisi) : ?>
                                                             <option value="<?= $divisi['id']; ?>"><?= $divisi['nama']; ?></option>
@@ -219,7 +223,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="jabatan">PILIH JABATAN</label>
-                                                    <select class="form-select" id="jabatan" name="jabatan" required>
+                                                    <select class="form-select select2" id="jabatan" name="jabatan" required>
                                                         <option value=""></option>
                                                         <?php foreach ($jabatanData as $jabatan) : ?>
                                                             <option value="<?= $jabatan['id']; ?>"><?= $jabatan['nama']; ?></option>
@@ -232,7 +236,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="grade">PILIH GRADE</label>
-                                                    <select class="form-select" id="grade" name="grade" required>
+                                                    <select class="form-select select2" id="grade" name="grade" required>
                                                         <option value=""></option>
                                                         <?php foreach ($gradeData as $grade) : ?>
                                                             <option value="<?= $grade['id']; ?>"><?= $grade['kategori']; ?></option>
@@ -244,7 +248,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_kontrak">PILIH STATUS KONTRAK</label>
-                                                    <select class="form-select" id="status_kontrak" name="status_kontrak" required>
+                                                    <select class="form-select select2" id="status_kontrak" name="status_kontrak" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusKontrakData as $statusKontrak) : ?>
                                                             <option value="<?= $statusKontrak['id']; ?>"><?= $statusKontrak['status']; ?></option>
@@ -262,7 +266,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_pernikahan">PILIH STATUS PERNIKAHAN</label>
-                                                    <select class="form-select" id="status_pernikahan" name="status_pernikahan" required>
+                                                    <select class="form-select select2" id="status_pernikahan" name="status_pernikahan" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusPernikahanData as $statusPernikahan) : ?>
                                                             <option value="<?= $statusPernikahan['id']; ?>"><?= $statusPernikahan['status']; ?></option>
@@ -392,26 +396,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if (!empty($users) && is_array($users)) : ?>
-                                    <?php foreach ($users as $index => $user) : ?>
+                                <?php if (!empty($karyawans) && is_array($karyawans)) : ?>
+                                    <?php foreach ($karyawans as $index => $karyawan) : ?>
                                         <tr>
                                             <th scope="row"><?= $index + 1 ?></th>
-                                            <td><?= esc($user['nama']) ?></td>
-                                            <td><?= esc($user['email']) ?></td>
-                                            <td><?= esc($user['divisi']) ?></td>
-                                            <td><?= esc($user['jabatan']) ?></td>
+                                            <td><?= esc($karyawan['nama']) ?></td>
+                                            <td><?= esc($karyawan['user_email']) ?></td>
+                                            <td><?= esc($karyawan['divisi']) ?></td>
+                                            <td><?= esc($karyawan['jabatan']) ?></td>
                                             <td>
                                                 <button class="btn btn-primary btn-sm" title="Edit" onclick="window.location.href='/edit-data-karyawan'">
                                                     <i class="mdi mdi-file-document-edit-outline"></i> Edit
                                                 </button>
-                                                <button class="btn btn-danger btn-sm" title="Hapus">
+                                                <button
+                                                    class="btn btn-danger btn-sm delete-karyawan"
+                                                    data-id="<?= esc($karyawan['id']) ?>"
+                                                    title="Hapus">
                                                     <i class="mdi mdi-delete-forever-outline"></i> Hapus
                                                 </button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="6" class="text-center">Tidak ada data karyawan.</td>
+                                    </tr>
                                 <?php endif; ?>
                             </tbody>
+
                         </table>
                     </div>
 
@@ -507,6 +519,91 @@
         $('#tempat_lahir').select2({
             placeholder: "Pilih Tempat Lahir",
             theme: "bootstrap-5",
+        });
+        $('button[type="reset"]').click(function() {
+            // Reset semua Select2
+            $('.select2').val(null).trigger('change');
+        });
+    </script>
+
+    <!-- javascript untuk swal ketika delete karyawan -->
+    <script>
+        $(document).ready(function() {
+            $('.delete-karyawan').click(function(e) {
+                e.preventDefault();
+
+                const id = $(this).data('id');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Data beserta akun karyawan akan hilang!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '<?= base_url('data-karyawan/delete') ?>',
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: "Data beserta akun karyawan berhasil dihapus.",
+                                        icon: "success"
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: response.message || "Gagal menghapus data karyawan.",
+                                        icon: "error"
+                                    })
+                                }
+                            },
+                            error: function() {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: "An error occured while deleting the data.",
+                                    icon: "error"
+                                });
+                            }
+                        });
+
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <!-- javascript untuk mengatur checkbox alamat -->
+    <script>
+        $(document).ready(function() {
+            $('#alamat_domisili_checkbox').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#alamat_domisili').val($('#alamat_ktp').val());
+                    $('#alamat_domisili').prop('readonly', true);
+                } else {
+                    $('#alamat_domisili').val('');
+                    $('#alamat_domisili').prop('readonly', false);
+                }
+            });
+            $('#alamat_korespondensi_checkbox').change(function() {
+                if ($(this).is(':checked')) {
+                    $('#alamat_korespondensi').val($('#alamat_domisili').val());
+                    $('#alamat_korespondensi').prop('readonly', true);
+                } else {
+                    $('#alamat_korespondensi').val('');
+                    $('#alamat_korespondensi').prop('readonly', false);
+                }
+            });
         });
     </script>
 

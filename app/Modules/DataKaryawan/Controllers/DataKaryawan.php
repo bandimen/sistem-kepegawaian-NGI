@@ -12,6 +12,7 @@ use Modules\Provinsi\Models\ProvinsiModel;
 use Modules\StatusKontrak\Models\StatusKontrakModel;
 use Modules\StatusPernikahan\Models\StatusPernikahanModel;
 use Modules\UnitKerja\Models\UnitKerjaModel;
+use Modules\Karyawan\Models\KaryawanModel;
 
 class DataKaryawan extends BaseController
 {
@@ -25,6 +26,7 @@ class DataKaryawan extends BaseController
     protected $statusKontrakModel;
     protected $statusPernikahanModel;
     protected $unitKerjaModel;
+    protected $karyawanModel;
 
     public function __construct()
     {
@@ -37,17 +39,12 @@ class DataKaryawan extends BaseController
         $this->statusKontrakModel = new StatusKontrakModel();
         $this->statusPernikahanModel = new StatusPernikahanModel();
         $this->unitKerjaModel = new UnitKerjaModel();
+        $this->karyawanModel = new KaryawanModel();
     }
 
     public function show_data_karyawan()
     {
-        $users = $this->userModel
-            ->select('user.id, user.nama, user.email, divisi.nama as divisi, jabatan.nama as jabatan')
-            ->join('karyawan', 'user.id = karyawan.user_id', 'left')
-            ->join('divisi', 'karyawan.divisi_id = divisi.id', 'left')
-            ->join('jabatan', 'karyawan.jabatan_id = jabatan.id', 'left')
-            ->where('user.is_deleted', 0)
-            ->findAll();
+        $karyawans = $this->karyawanModel->getAllKaryawan();
 
         $sesi = session()->get();
         $userData = $this->userModel->where('id', $sesi['user_id'])->first();
@@ -65,7 +62,7 @@ class DataKaryawan extends BaseController
             'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
             'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Dashboard', 'li_2' => 'Data Karyawan']),
             'userData' => $userData,
-            'users' => $users,
+            'karyawans' => $karyawans,
             'provinsiData' => $provinsiData,
             'divisiData' => $divisiData,
             'gradeData' => $gradeData,
