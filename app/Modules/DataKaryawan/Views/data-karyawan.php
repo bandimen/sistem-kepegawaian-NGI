@@ -57,12 +57,17 @@
                     <div>
                         <!-- Form Tab -->
                         <div id="form-tab" class="tab-content active">
-                            <h4>Form</h4>
-                            <?php if (session()->getFlashdata('pesan')) : ?>
+                            <?php if (isset($pesanSukses)) : ?>
                                 <div class="alert alert-success" role="alert">
-                                    <?= session()->getFlashdata('pesan'); ?>
+                                    <?= $pesanSukses; ?>
                                 </div>
                             <?php endif; ?>
+                            <?php if (isset($pesanError)) : ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?= $pesanError; ?>
+                                </div>
+                            <?php endif; ?>
+                            <h4>Form</h4>
                             <p>Isi form untuk data karyawan baru di sini:</p>
 
                             <div class="card">
@@ -73,24 +78,23 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nama">NAMA</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nama') ? 'is-invalid' : '' ?> " id="nama" placeholder="Nama Lengkap Karyawan" name="nama" value="<?= old('nama') ?>" required pattern="[A-Za-z\s]+" maxlength="255">
+                                                    <input type="text" class="form-control <?= isset($validation['nama']) ? 'is-invalid' : '' ?> " id="nama" placeholder="Nama Lengkap Karyawan" name="nama" value="<?= old('nama') ?>" required pattern="[A-Za-z\s]+" maxlength="255">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('nama') ? $validation->getError('nama') : 'Masukkan nama lengkap dengan benar.' ?>
+                                                        <?= isset($validation['nama']) ? $validation['nama'] : 'Masukkan nama lengkap dengan benar.' ?>
                                                     </div>
-
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nip">NIP</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nip') ? 'is-invalid' : '' ?>" id="nip" placeholder="NIP" name="nip" value="<?= old('nip') ?>" required minlength="9" maxlength="18" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['nip']) ? 'is-invalid' : '' ?>" id="nip" placeholder="NIP" name="nip" value="<?= old('nip') ?>" required minlength="9" maxlength="18" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('nip') ? $validation->getError('nip') : 'Masukkan NIP dengan benar.' ?>
+                                                        <?= isset($validation['nip']) ? $validation['nip'] : 'Masukkan NIP dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="npwp">NPWP</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('npwp') ? 'is-invalid' : '' ?>" id="npwp" placeholder="NPWP" name="npwp" value="<?= old('npwp') ?>" required minlength="15" maxlength="16" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['npwp']) ? 'is-invalid' : '' ?>" id="npwp" placeholder="NPWP" name="npwp" value="<?= old('npwp') ?>" required minlength="15" maxlength="16" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('npwp') ? $validation->getError('npwp') : 'Masukkan NPWP dengan benar.' ?>
+                                                        <?= isset($validation['npwp']) ? $validation['npwp'] : 'Masukkan NPWP dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -98,30 +102,30 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="username">USERNAME</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('username') ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>" name="username" required maxlength="30" pattern="[a-zA-Z0-9]+">
+                                                    <input type="text" class="form-control <?= isset($validation['username']) ? 'is-invalid' : '' ?>" id="username" placeholder="Username" value="<?= old('username') ?>" name="username" required maxlength="30" pattern="[a-zA-Z0-9]+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('username') ? $validation->getError('username') : 'Masukkan username dengan benar.' ?>
+                                                        <?= isset($validation['username']) ? $validation['username'] : 'Masukkan username dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nik">NIK</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('nik') ? 'is-invalid' : '' ?>" id="nik" placeholder="NIK" name="nik" value="<?= old('nik') ?>" required minlength="16" maxlength="16" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['nik'])  ? 'is-invalid' : '' ?>" id="nik" placeholder="NIK" name="nik" value="<?= old('nik') ?>" required minlength="16" maxlength="16" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('nik') ? $validation->getError('nik') : 'Masukkan NIK dengan benar.' ?>
+                                                        <?= isset($validation['nik']) ? $validation['nik'] : 'Masukkan NIK dengan benar.' ?>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_bpjs">KJP (NOMOR BPJS)</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_bpjs') ? 'is-invalid' : '' ?>" id="no_bpjs" placeholder="KJP (Nomor BPJS)" value="<?= old('no_bpjs') ?>" name="no_bpjs" required minlength="12" maxlength="13" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['no_bpjs']) ? 'is-invalid' : '' ?>" id="no_bpjs" placeholder="KJP (Nomor BPJS)" value="<?= old('no_bpjs') ?>" name="no_bpjs" required minlength="12" maxlength="13" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('no_bpjs') ? $validation->getError('no_bpjs') : 'Masukkan nomor BPJS dengan benar.' ?>
+                                                        <?= isset($validation['no_bpjs']) ? $validation['no_bpjs'] : 'Masukkan nomor BPJS dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- ini harusnya pake input select2 -->
+
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="tempat_lahir">TEMPAT LAHIR</label>
-                                                <select class="form-select select2" id="tempat_lahir" name="tempat_lahir" required>
+                                                <select class="form-select select2" id="tempat_lahir" value="<?= old('kota') ?>" name="tempat_lahir" required>
                                                     <option value=""></option>
                                                     <?php foreach ($kotaData as $kota) : ?>
                                                         <option value="<?= $kota['nama']; ?>"><?= $kota['nama']; ?></option>
@@ -131,12 +135,12 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="tanggal_lahir">TANGGAL LAHIR</label>
-                                                <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir" name="tanggal_lahir" required>
+                                                <input type="date" class="form-control" id="tanggal_lahir" value="<?= old('tanggal_lahir') ?>" placeholder="Tanggal Lahir" name="tanggal_lahir" required>
                                                 <div class="invalid-feedback">Silakan pilih tanggal lahir.</div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="jenis_kelamin">JENIS KELAMIN</label>
-                                                <select class="form-select select2" name="jenis_kelamin" id="jenis_kelamin" required>
+                                                <select class="form-select select2" name="jenis_kelamin" id="jenis_kelamin" value="<?= old('jenis_kelamin') ?>" required>
                                                     <option value="" disabled selected>Pilih Jenis Kelamin</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                     <option value="Laki-Laki">Laki-Laki</option>
@@ -146,44 +150,44 @@
 
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_ktp">ALAMAT SESUAI KTP</label>
-                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_ktp') ? 'is-invalid' : '' ?>" id="alamat_ktp" placeholder="Alamat Sesuai KTP" name="alamat_ktp" value="<?= old('alamat_ktp') ?>" required maxlength="255"></textarea>
+                                                <textarea class="form-control <?= isset($validation['alamat_ktp']) ? 'is-invalid' : '' ?>" id="alamat_ktp" placeholder="Alamat Sesuai KTP" name="alamat_ktp" required maxlength="255"><?= old('alamat_ktp') ?></textarea>
                                                 <div class="invalid-feedback">
-                                                    <?= isset($validation) && $validation->hasError('alamat_ktp') ? $validation->getError('alamat_ktp') : 'Masukkan alamat dengan benar.' ?>
+                                                    <?= isset($validation['alamat_ktp']) ? $validation['alamat_ktp'] : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_domisili">ALAMAT DOMISILI</label>
-                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_domisili') ? 'is-invalid' : '' ?>" id="alamat_domisili" placeholder="Alamat Domisili" value="<?= old('alamat_domisili') ?>" name="alamat_domisili" required></textarea>
-                                                <input type="checkbox" id="alamat_domisili_checkbox" name="alamat_domisili_checkbox" value="">
+                                                <textarea class="form-control <?= isset($validation['alamat_domisili']) ? 'is-invalid' : '' ?>" id="alamat_domisili" placeholder="Alamat Domisili" name="alamat_domisili" required><?= old('alamat_domisili') ?></textarea>
+                                                <input type="checkbox" id="alamat_domisili_checkbox" name="alamat_domisili_checkbox" value="" <?= old('alamat_domisili_checkbox') ? 'checked' : '' ?>>
                                                 <label for="alamat_domisili_checkbox">Sama seperti alamat KTP</label><br>
                                                 <div class="invalid-feedback">
-                                                    <?= isset($validation) && $validation->hasError('alamat_domisili') ? $validation->getError('alamat_domisili') : 'Masukkan alamat dengan benar.' ?>
+                                                    <?= isset($validation['alamat_domisili']) ? $validation['alamat_domisili']  : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="alamat_korespondensi">ALAMAT KORESPONDENSI</label>
-                                                <textarea class="form-control <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? 'is-invalid' : '' ?>" id="alamat_korespondensi" placeholder="Alamat Korespondensi" value="<?= old('alamat_korespondensi') ?>" name="alamat_korespondensi" required></textarea>
-                                                <input type="checkbox" id="alamat_korespondensi_checkbox" name="alamat_korespondensi_checkbox" value="">
-                                                <label for="alamat_domisili_checkbox">Sama seperti alamat domisili</label><br>
+                                                <textarea class="form-control <?= isset($validation['alamat_korespondensi']) ? 'is-invalid' : '' ?>" id="alamat_korespondensi" placeholder="Alamat Korespondensi" name="alamat_korespondensi" required><?= old('alamat_korespondensi') ?></textarea>
+                                                <input type="checkbox" id="alamat_korespondensi_checkbox" name="alamat_korespondensi_checkbox" value="" <?= old('alamat_korespondensi_checkbox') ? 'checked' : '' ?>>
+                                                <label for="alamat_korespondensi_checkbox">Sama seperti alamat domisili</label><br>
                                                 <div class="invalid-feedback">
-                                                    <?= isset($validation) && $validation->hasError('alamat_korespondensi') ? $validation->getError('alamat_korespondensi') : 'Masukkan alamat dengan benar.' ?>
+                                                    <?= isset($validation['alamat_korespondensi']) ? $validation['alamat_korespondensi']  : 'Masukkan alamat dengan benar.' ?>
                                                 </div>
                                             </div>
 
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="provinsi">PILIH PROVINSI DOMISILI</label>
                                                     <select class="form-select select2" id="provinsi" name="provinsi" required>
                                                         <option value=""></option>
                                                         <?php foreach ($provinsiData as $provinsi) : ?>
-                                                            <option value="<?= $provinsi['kode']; ?>"><?= $provinsi['nama']; ?></option>
+                                                            <option value="<?= $provinsi['kode']; ?>" <?= old('provinsi') == $provinsi['kode'] ? 'selected' : '' ?>><?= $provinsi['nama']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih provinsi domisili.</div>
                                                 </div>
                                             </div>
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="kota">PILIH KAB/KOTA DOMISILI</label>
@@ -193,53 +197,53 @@
                                                     <div class="invalid-feedback">Silakan pilih kab/kota domisili.</div>
                                                 </div>
                                             </div>
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="unit_kerja">PILIH UNIT KERJA</label>
-                                                    <select class="form-select select2" id="unit_kerja" name="unit_kerja" required>
+                                                    <select class="form-select select2" id="unit_kerja" name="unit_kerja" value="<?= old('unit_kerja') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($unitKerjaData as $unitKerja) : ?>
-                                                            <option value="<?= $unitKerja['id']; ?>"><?= $unitKerja['nama']; ?></option>
+                                                            <option value="<?= $unitKerja['id']; ?>" <?= old('unit_kerja') == $unitKerja['id'] ? 'selected' : '' ?>><?= $unitKerja['nama']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih unit kerja.</div>
                                                 </div>
                                             </div>
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="divisi">PILIH DIVISI</label>
-                                                    <select class="form-select select2" id="divisi" name="divisi" required>
+                                                    <select class="form-select select2" id="divisi" name="divisi" value="<?= old('divisi') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($divisiData as $divisi) : ?>
-                                                            <option value="<?= $divisi['id']; ?>"><?= $divisi['nama']; ?></option>
+                                                            <option value="<?= $divisi['id']; ?>" <?= old('divisi') == $divisi['id'] ? 'selected' : '' ?>><?= $divisi['nama']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih divisi.</div>
                                                 </div>
                                             </div>
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="jabatan">PILIH JABATAN</label>
-                                                    <select class="form-select select2" id="jabatan" name="jabatan" required>
+                                                    <select class="form-select select2" id="jabatan" name="jabatan" value="<?= old('jabatan') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($jabatanData as $jabatan) : ?>
-                                                            <option value="<?= $jabatan['id']; ?>"><?= $jabatan['nama']; ?></option>
+                                                            <option value="<?= $jabatan['id']; ?>" <?= old('jabatan') == $jabatan['id'] ? 'selected' : '' ?>><?= $jabatan['nama']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih jabatan.</div>
                                                 </div>
                                             </div>
-                                            <!-- ini pake select2 -->
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="grade">PILIH GRADE</label>
-                                                    <select class="form-select select2" id="grade" name="grade" required>
+                                                    <select class="form-select select2" id="grade" name="grade" value="<?= old('grade') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($gradeData as $grade) : ?>
-                                                            <option value="<?= $grade['id']; ?>"><?= $grade['kategori']; ?></option>
+                                                            <option value="<?= $grade['id']; ?>" <?= old('grade') == $grade['id'] ? 'selected' : '' ?>><?= $grade['kategori']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih grade.</div>
@@ -248,10 +252,10 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_kontrak">PILIH STATUS KONTRAK</label>
-                                                    <select class="form-select select2" id="status_kontrak" name="status_kontrak" required>
+                                                    <select class="form-select select2" id="status_kontrak" name="status_kontrak" value="<?= old('status_kontrak') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusKontrakData as $statusKontrak) : ?>
-                                                            <option value="<?= $statusKontrak['id']; ?>"><?= $statusKontrak['status']; ?></option>
+                                                            <option value="<?= $statusKontrak['id']; ?>" <?= old('status_kontrak') == $statusKontrak['id'] ? 'selected' : '' ?>><?= $statusKontrak['status']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih status kontrak.</div>
@@ -259,17 +263,17 @@
                                             </div>
                                             <div class="col-md-4 mb-3">
                                                 <label class="form-label" for="tanggal_masuk">TANGGAL MASUK</label>
-                                                <input type="date" class="form-control" id="tanggal_masuk" placeholder="Tanggal Masuk" name="tanggal_masuk" required>
+                                                <input type="date" class="form-control" id="tanggal_masuk" placeholder="Tanggal Masuk" name="tanggal_masuk" value="<?= old('tanggal_masuk') ?>" required>
                                                 <div class="invalid-feedback">Silakan pilih tanggal masuk.</div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="status_pernikahan">PILIH STATUS PERNIKAHAN</label>
-                                                    <select class="form-select select2" id="status_pernikahan" name="status_pernikahan" required>
+                                                    <select class="form-select select2" id="status_pernikahan" name="status_pernikahan" value="<?= old('status_pernikahan') ?>" required>
                                                         <option value=""></option>
                                                         <?php foreach ($statusPernikahanData as $statusPernikahan) : ?>
-                                                            <option value="<?= $statusPernikahan['id']; ?>"><?= $statusPernikahan['status']; ?></option>
+                                                            <option value="<?= $statusPernikahan['id']; ?>" <?= old('status_pernikahan') == $statusPernikahan['id'] ? 'selected' : '' ?>><?= $statusPernikahan['status']; ?></option>
                                                         <?php endforeach; ?>
                                                     </select>
                                                     <div class="invalid-feedback">Silakan pilih status pernikahan.</div>
@@ -278,45 +282,45 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="jml_tanggungan">JUMLAH TANGGUNGAN</label>
-                                                    <input type="number" class="form-control <?= isset($validation) && $validation->hasError('jml_tanggungan') ? 'is-invalid' : '' ?>" id="jml_tanggungan" placeholder="Jumlah Tanggungan" value="<?= old('jml_tanggungan') ?>" name="jml_tanggungan" required min="0">
+                                                    <input type="number" class="form-control <?= isset($validation['jml_tanggungan']) ? 'is-invalid' : '' ?>" id="jml_tanggungan" placeholder="Jumlah Tanggungan" value="<?= old('jml_tanggungan') ?>" name="jml_tanggungan" required min="0">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('jml_tanggungan') ? $validation->getError('jml_tanggungan') : 'Masukkan jumlah tanggungan yang dimiliki.' ?>
+                                                        <?= isset($validation['jml_tanggungan']) ? $validation['jml_tanggungan'] : 'Masukkan jumlah tanggungan yang dimiliki.' ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="email_kantor">EMAIL KANTOR</label>
-                                                    <input type="email" class="form-control <?= isset($validation) && $validation->hasError('email_kantor') ? 'is-invalid' : '' ?>" id="email_kantor" placeholder="Email Kantor" value="<?= old('email_kantor') ?>" name="email_kantor" required>
+                                                    <input type="email" class="form-control <?= isset($validation['email_kantor']) ? 'is-invalid' : '' ?>" id="email_kantor" placeholder="Email Kantor" value="<?= old('email_kantor') ?>" name="email_kantor" required>
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('email_kantor') ? $validation->getError('email_kantor') : 'Masukkan email kantor dengan benar.' ?>
+                                                        <?= isset($validation['email_kantor']) ? $validation['email_kantor'] : 'Masukkan email kantor dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="email_pribadi">EMAIL PRIBADI</label>
-                                                    <input type="email" class="form-control <?= isset($validation) && $validation->hasError('email_pribadi') ? 'is-invalid' : '' ?>" id="email_pribadi" placeholder="Email Pribadi" value="<?= old('email_pribadi') ?>" name="email_pribadi" required>
+                                                    <input type="email" class="form-control <?= isset($validation['email_pribadi']) ? 'is-invalid' : '' ?>" id="email_pribadi" placeholder="Email Pribadi" value="<?= old('email_pribadi') ?>" name="email_pribadi" required>
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('email_pribadi') ? $validation->getError('email_pribadi') : 'Masukkan email pribadi dengan benar.' ?>
+                                                        <?= isset($validation['email_pribadi']) ? $validation['email_pribadi'] : 'Masukkan email pribadi dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_telp">NOMOR TELEPON</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_telp') ? 'is-invalid' : '' ?>" id="no_telp" placeholder="Nomor Telepon" value="<?= old('no_telp') ?>" name="no_telp" required maxlength="15" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['no_telp']) ? 'is-invalid' : '' ?>" id="no_telp" placeholder="Nomor Telepon" value="<?= old('no_telp') ?>" name="no_telp" required maxlength="15" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('no_telp') ? $validation->getError('no_telp') : 'Masukkan nomor telepon dengan benar.' ?>
+                                                        <?= isset($validation['no_telp']) ? $validation['no_telp']  : 'Masukkan nomor telepon dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="no_rek">NOMOR REKENING</label>
-                                                    <input type="text" class="form-control <?= isset($validation) && $validation->hasError('no_rek') ? 'is-invalid' : '' ?>" id="no_rek" placeholder="Nomor Rekening" value="<?= old('no_rek') ?>" name="no_rek" required maxlength="15" pattern="\d+">
+                                                    <input type="text" class="form-control <?= isset($validation['no_rek'])  ? 'is-invalid' : '' ?>" id="no_rek" placeholder="Nomor Rekening" value="<?= old('no_rek') ?>" name="no_rek" required maxlength="15" pattern="\d+">
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('no_rek') ? $validation->getError('no_rek') : 'Masukkan nomor rekening dengan benar.' ?>
+                                                        <?= isset($validation['no_rek']) ? $validation['no_rek'] : 'Masukkan nomor rekening dengan benar.' ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -324,49 +328,49 @@
                                             <div class="mb-3">
                                                 <label class="form-label" for="pas_foto">PAS FOTO</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control  <?= isset($validation) && $validation->hasError('pas_foto') ? 'is-invalid' : '' ?>" id="pas_foto" name="pas_foto" required>
+                                                    <input type="file" class="form-control  <?= isset($validation['pas_foto']) ? 'is-invalid' : '' ?>" id="pas_foto" name="pas_foto" required>
                                                     <div class="invalid-feedback">
-                                                        <?= isset($validation) && $validation->hasError('pas_foto') ? $validation->getError('pas_foto') : 'Pas Foto diperlukan.' ?>
+                                                        <?= isset($validation['pas_foto']) ? $validation['pas_foto']  : 'Pas Foto diperlukan.' ?>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_ktp">KTP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_ktp') ? 'is-invalid' : '' ?>" id="file_ktp" name="file_ktp" required>
-                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_ktp') ? $validation->getError('file_ktp') : 'File KTP diperlukan.' ?></div>
+                                                    <input type="file" class="form-control <?= isset($validation['file_ktp']) ? 'is-invalid' : '' ?>" id="file_ktp" name="file_ktp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation['file_ktp']) ? $validation['file_ktp']  : 'File KTP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_kjp">KJP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_kjp') ? 'is-invalid' : '' ?>" id="file_kjp" name="file_kjp" required>
-                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_kjp') ? $validation->getError('file_kjp') : 'File KJP diperlukan.' ?></div>
+                                                    <input type="file" class="form-control <?= isset($validation['file_kjp']) ? 'is-invalid' : '' ?>" id="file_kjp" name="file_kjp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation['file_kjp']) ? $validation['file_kjp'] : 'File KJP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_npwp">NPWP</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_npwp') ? 'is-invalid' : '' ?>" id="file_npwp" name="file_npwp" required>
-                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_npwp') ? $validation->getError('file_npwp') : 'File NPWP diperlukan.' ?></div>
+                                                    <input type="file" class="form-control <?= isset($validation['file_npwp']) ? 'is-invalid' : '' ?>" id="file_npwp" name="file_npwp" required>
+                                                    <div class="invalid-feedback"><?= isset($validation['file_npwp']) ? $validation['file_npwp'] : 'File NPWP diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_kk">KARTU KELUARGA</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_kk') ? 'is-invalid' : '' ?>" id="file_kk" name="file_kk" required>
-                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_kk') ? $validation->getError('file_kk') : 'File KK diperlukan.' ?></div>
+                                                    <input type="file" class="form-control <?= isset($validation['file_kk']) ? 'is-invalid' : '' ?>" id="file_kk" name="file_kk" required>
+                                                    <div class="invalid-feedback"><?= isset($validation['file_kk']) ? $validation['file_kk']  : 'File KK diperlukan.' ?></div>
                                                 </div>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label class="form-label" for="file_pendidikan">PENDIDIKAN TERAKHIR</label>
                                                 <div class="input-group">
-                                                    <input type="file" class="form-control <?= isset($validation) && $validation->hasError('file_pendidikan') ? 'is-invalid' : '' ?>" id="file_pendidikan" name="file_pendidikan" required>
-                                                    <div class="invalid-feedback"><?= isset($validation) && $validation->hasError('file_pendidikan') ? $validation->getError('file_pendidikan') : 'File ijazah pendidikan terakhir diperlukan.' ?></div>
+                                                    <input type="file" class="form-control <?= isset($validation['file_pendidikan']) ? 'is-invalid' : '' ?>" id="file_pendidikan" name="file_pendidikan" required>
+                                                    <div class="invalid-feedback"><?= isset($validation['file_pendidikan']) ? $validation['file_pendidikan'] : 'File ijazah pendidikan terakhir diperlukan.' ?></div>
                                                 </div>
                                             </div>
 

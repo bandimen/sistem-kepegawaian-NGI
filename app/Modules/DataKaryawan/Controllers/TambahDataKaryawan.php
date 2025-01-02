@@ -288,9 +288,9 @@ class TambahDataKaryawan extends BaseController
         ],
       ],
     ])) {
-      return redirect()->to('/data-karyawan')->withInput()->with('validation', $this->validator);
+      session()->setFlashdata('pesanError', 'Gagal menambahkan data karyawan. Pastikan semua input valid');
+      return redirect()->to('/data-karyawan')->withInput()->with('validation', $this->validator->getErrors());
     }
-
 
     // field input
     $nama = $this->request->getVar('nama');
@@ -395,7 +395,7 @@ class TambahDataKaryawan extends BaseController
       'updated_by' => $userData['nama'],
     ]);
 
-    session()->setFlashdata('pesan', 'Data karyawan berhasil ditambahkan.');
+    session()->setFlashdata('pesanSukses', 'Data karyawan berhasil ditambahkan.');
     return redirect()->to('/data-karyawan');
   }
 }
