@@ -80,7 +80,13 @@
                         <td><?= esc($user['email']) ?></td>
                         <td><?= esc($user['divisi']) ?></td>
                         <td>
-                          <button class="btn btn-primary btn-sm" title="Edit">
+                          <button class="btn btn-primary btn-sm edit-user"
+                            data-id="<?= esc($user['id']) ?>"
+                            data-nama="<?= esc($user['nama']) ?>"
+                            data-username="<?= esc($user['username']) ?>"
+                            data-email="<?= esc($user['email']) ?>"
+                            data-divisi="<?= esc($user['divisi_id']) ?>"
+                            title="Edit">
                             <i class="mdi mdi-file-document-edit-outline"></i> Edit
                           </button>
                           <button
@@ -115,7 +121,7 @@
 
             <div class="card">
               <div class="card-body p-4">
-                <form class="needs-validation formedituser" novalidate action="" method="post" enctype="multipart/form-data">
+                <form class="needs-validation formedituser" novalidate action="" method="post">
                   <?= csrf_field(); ?>
                   <div class="row">
                     <div class="mb-3">
@@ -155,7 +161,7 @@
 
                     <!-- ini pake select2 -->
                     <div class="mb-3">
-                      <label class="form-label" for="divisi">PILIH DIVISI</label>
+                      <label class="form-label" for="divisi">DIVISI</label>
                       <select class="form-select select2" id="divisi" name="divisi" required>
                         <option value=""></option>
                         <?php foreach ($divisiData as $divisi) : ?>
@@ -218,9 +224,35 @@
       $('.select2').val(null).trigger('change');
     });
   </script>
+  <!-- javascript untuk menampilkan data untuk dikirim ke update -->
+  <script>
+    $(document).ready(function() {
+      $('.edit-user').click(function() {
+        var id = $(this).data('id');
+        var nama = $(this).data('nama');
+        var username = $(this).data('username');
+        var email = $(this).data('email');
+        var divisi = $(this).data('divisi');
+
+        $('#id').val(id);
+        $('#nama').val(nama);
+        $('#username').val(username);
+        $('#email').val(email);
+        $('#divisi').val(divisi).trigger('change');
+
+        $('#email').attr('readonly', true);
+
+        $('.tab-button').removeClass('active');
+        $('.tab-content').removeClass('active');
+
+        $('button[data-tab="update-tab"]').addClass('active');
+        $('#update-tab').addClass('active');
+      });
+    });
+  </script>
 
   <!-- javascript untuk swal ketika delete karyawan -->
-  <script>
+  <!-- <script>
     $(document).ready(function() {
       $('.delete-user').click(function(e) {
         e.preventDefault();
@@ -273,7 +305,7 @@
         });
       });
     });
-  </script>
+  </script> -->
 
 
   <!-- apexcharts -->

@@ -44,6 +44,9 @@ class DataKaryawan extends BaseController
 
     public function show_data_karyawan()
     {
+        $validation = \Config\Services::validation();
+        $session = \Config\Services::session();
+
         $karyawans = $this->karyawanModel->getAllKaryawan();
 
         $sesi = session()->get();
@@ -58,7 +61,9 @@ class DataKaryawan extends BaseController
         $kotaData = $this->kotaModel->getAllKota();
 
         $data = [
-            'validation' => \Config\Services::validation(),
+            'validation' => session()->get('validation'),  // Ambil validasi dari session flashdata
+            'pesanError' => session()->getFlashdata('pesanError'), // Ambil pesan error
+            'pesanSukses' => session()->getFlashdata('pesanSukses'),
             'title_meta' => view('partials/title-meta', ['title' => 'Data Karyawan']),
             'page_title' => view('partials/page-title', ['title' => 'Data Karyawan', 'li_1' => 'Dashboard', 'li_2' => 'Data Karyawan']),
             'userData' => $userData,
@@ -72,8 +77,6 @@ class DataKaryawan extends BaseController
             'statusKontrakData' => $statusKontrakData,
             'jabatanData' => $jabatanData,
         ];
-        $data['validation'] = session()->get('validation');
-
 
         return view($this->folder_directory . 'data-karyawan', $data);
     }
