@@ -80,6 +80,7 @@ class DataKaryawan extends BaseController
 
         return view($this->folder_directory . 'data-karyawan', $data);
     }
+    
 
     // public function store_to_karyawan()
     // {

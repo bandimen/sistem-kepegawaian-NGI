@@ -45,159 +45,82 @@
 
                     <!-- Tabs Navigation -->
                     <div class="d-flex mb-4">
-                        <button class="tab-button active" data-tab="data-tab">Data</button>
-                        <button class="tab-button" data-tab="update-tab">Update</button>
+                        <button class="tab-button active" data-tab="form-tab">Form</button>
+                        <button class="tab-button" data-tab="data-tab">Data</button>
                     </div>
 
                     <!-- Tabs Content -->
                     <div>
-                        <!-- Data Tab -->
-                        <div id="data-tab" class="tab-content active">
-                            <h4>Data</h4>
-                            <p>Berikut adalah data yang tersedia:</p>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">No. HP</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Jenis User</th>
-                                    <th scope="col">Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>John Doe</td>
-                                        <td>628123456789</td>
-                                        <td>johndoe@example.com</td>
-                                        <td>Admin</td>
-                                        <td>
-                                            <button class="btn btn-primary btn-sm" title="Edit">
-                                                <i class="mdi mdi-file-document-edit-outline"></i> Edit
-                                            </button>
-                                            <button class="btn btn-danger btn-sm" title="Hapus">
-                                                <i class="mdi mdi-delete-forever-outline"></i> Hapus
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jane Smith</td>
-                                        <td>628987654321</td>
-                                        <td>janesmith@example.com</td>
-                                        <td>Operator</td>
-                                        <td>
-                                        <div class="btn-group me-2 mb-2 mb-sm-0">
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-trash"></i></button>
-                                        <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa dripicons-preview"></i></button>
-                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="far fa-trash-alt"></i></button> -->
-                                        <!-- <button type="button" class="btn btn-primary waves-light waves-effect"><i class="fa fa-exclamation-circle"></i></button> -->
-                                    </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Update Tab -->
-                        <div id="update-tab" class="tab-content">
-                            <h4>Update</h4>
-                            <p>Isi form untuk update data di sini:</p>
+                        <!-- Form Tab -->
+                        <div id="form-tab" class="tab-content active">
+                            <h4>Form</h4>
+                            <?php if (session()->getFlashdata('pesan')) : ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?= session()->getFlashdata('pesan'); ?>
+                                </div>
+                            <?php endif; ?>
+                            <p>Isi form untuk data karyawan baru di sini:</p>
 
                             <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Textual inputs</h4>
-                                    <p class="card-title-desc">Here are examples of <code>.form-control</code> applied to each
-                                        textual HTML5 <code>&lt;input&gt;</code> <code>type</code>.</p>
-                                </div>
                                 <div class="card-body p-4">
-                                    <div class="row">
-                                        <div class="col-lg-6">
+                                    <form class="needs-validation form-lembur" novalidate action="/form-lembur/tambah" method="post">
+                                        <?= csrf_field(); ?>
+                                        <div class="row">
                                             <div class="mb-3">
-                                                <label for="example-text-input" class="form-label">Text</label>
-                                                <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-search-input" class="form-label">Search</label>
-                                                <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+                                                <label class="form-label" for="divisi">DIVISI</label>
+                                                <input type="text" class="form-control" id="divisi" name="divisi" value="<?= esc($userData['divisi']) ?>" readonly>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="example-email-input" class="form-label">Email</label>
-                                                <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+                                                <label class="form-label" for="nama">NAMA</label>
+                                                <input type="text" class="form-control" id="nama" name="nama" value="<?= esc($userData['nama']) ?>" readonly>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="example-url-input" class="form-label">URL</label>
-                                                <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-tel-input" class="form-label">Telephone</label>
-                                                <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-password-input" class="form-label">Password</label>
-                                                <input class="form-control" type="password" value="hunter2" id="example-password-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-number-input" class="form-label">Number</label>
-                                                <input class="form-control" type="number" value="42" id="example-number-input">
-                                            </div>
-                                            <div>
-                                                <label for="example-datetime-local-input" class="form-label">Date and time</label>
-                                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
-                                            </div>
-                                            <div class="mt-4">
-                                                <button type="submit" class="btn btn-primary w-md">Submit</button>
+                                                <label class="form-label" for="nip">NIP</label>
+                                                <input type="text" class="form-control" id="nip" name="nip" value="<?= esc($userData['nip']) ?>" readonly>
                                             </div>
                                         </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label for="example-date-input" class="form-label">Date</label>
-                                                <input class="form-control" type="date" value="2019-08-19" id="example-date-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-month-input" class="form-label">Month</label>
-                                                <input class="form-control" type="month" value="2019-08" id="example-month-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-week-input" class="form-label">Week</label>
-                                                <input class="form-control" type="week" value="2019-W33" id="example-week-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-time-input" class="form-label">Time</label>
-                                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="example-color-input" class="form-label">Color picker</label>
-                                                <input type="color" class="form-control form-control-color mw-100" id="example-color-input" value="#5156be" title="Choose your color">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Select</label>
-                                                <select class="form-select">
-                                                    <option>Select</option>
-                                                    <option>Large select</option>
-                                                    <option>Small select</option>
-                                                </select>
-                                            </div>
-                                            <div>
-                                                <label for="exampleDataList" class="form-label">Datalists</label>
-                                                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-                                                <datalist id="datalistOptions">
-                                                    <option value="San Francisco">
-                                                    <option value="New York">
-                                                    <option value="Seattle">
-                                                    <option value="Los Angeles">
-                                                    <option value="Chicago">
-                                                </datalist>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Data Tab -->
+                    <div id="data-tab" class="tab-content">
+                        <h4>Data</h4>
+                        <p>Berikut adalah data karyawan PT. Nusantara Global Inovasi:</p>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Divisi</th>
+                                    <th scope="col">Pekerjaan</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (!empty($users) && is_array($users)) : ?>
+                                    <?php foreach ($users as $index => $user) : ?>
+                                        <tr>
+                                            <th scope="row"><?= $index + 1 ?></th>
+                                            <td><?= esc($user['nama']) ?></td>
+                                            <td><?= esc($user['email']) ?></td>
+                                            <td><?= esc($user['divisi']) ?></td>
+                                            <td><?= esc($user['jabatan']) ?></td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm" title="Edit">
+                                                    <i class="mdi mdi-file-document-edit-outline"></i> Edit
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" title="Hapus">
+                                                    <i class="mdi mdi-delete-forever-outline"></i> Hapus
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -224,17 +147,65 @@
             });
         });
     </script>
+
+    <!-- ajax ketika tombol submit ditekan maka akan melakukan validasi input -->
+    <!-- <script>
+        $(document).ready(function() {
+            $('.formtambahkaryawan').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "post",
+                    url: $(this).attr('action'),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    beforeSend: function() {
+                        $('.btnsubmit').attr('disabled', true);
+                        $('.btnsubmit').html('<i class="fa fa-spin fa-spinner"></i>');
+                    },
+                    complete: function() {
+                        $('.btnsubmit').removeAttr('disabled');
+                        $('.btnsubmit').html('Submit');
+                    },
+                    success: function(response) {
+                        if (response.error) {
+                            if (response.error.nama) {
+                                $('#nama').addClass('is-invalid');
+                                $('.errorNama').html(response.error.nama);
+                            } else {
+                                $('#nama').removeClass('is-invalid');
+                                $('.errorNama').html('');
+                            }
+                        } else if (response.success) {
+                            alert(response.success);
+                            location.reload(); // Reload halaman jika berhasil
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                });
+            });
+        });
+    </script> -->
+
     <!-- apexcharts -->
     <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
 
     <!-- Plugins js-->
     <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+    
     <!-- dashboard init -->
     <script src="assets/js/pages/dashboard.init.js"></script>
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+
+    <!-- form validation -->
+    <script src="assets/js/pages/form-validation.init.js"></script>
+    <script src="assets/js/app.js"></script>
+
 </body>
 
 </html>

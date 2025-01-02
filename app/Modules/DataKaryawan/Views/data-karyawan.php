@@ -409,7 +409,7 @@
                                             <td><?= esc($karyawan['divisi']) ?></td>
                                             <td><?= esc($karyawan['jabatan']) ?></td>
                                             <td>
-                                                <button class="btn btn-primary btn-sm" title="Edit">
+                                                <button class="btn btn-primary btn-sm" title="Edit" onclick="window.location.href='/edit-data-karyawan'">
                                                     <i class="mdi mdi-file-document-edit-outline"></i> Edit
                                                 </button>
                                                 <button
@@ -418,6 +418,266 @@
                                                     title="Hapus">
                                                     <i class="mdi mdi-delete-forever-outline"></i> Hapus
                                                 </button>
+                                                <button type="button" class="btn btn-warning btn-sm btn-details-karyawan" data-id-karyawan="1" data-bs-toggle="modal" data-bs-target="#karyawanModal">
+                                                    <i class="dripicons-preview"></i> Detail
+                                                </button>
+
+                                                <!-- Modal -->  
+                                                <div class="modal fade bs-example-modal-center" id="karyawanModal" tabindex="-1" role="dialog" aria-labelledby="karyawanModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="karyawanModalLabel">Detail Karyawan</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>       
+                                                            <div class="modal-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="nama">NAMA</label>
+                                                                            <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap Karyawan" name="nama" value="<?= isset($karyawans['nama']) ? $karyawans['nama'] : ''; ?>" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="nip">NIP</label>
+                                                                            <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip" value="<?= isset($karyawans['nip']) ? $karyawans['nip'] : ''; ?>" readonly>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="npwp">NPWP</label>
+                                                                            <input type="text" class="form-control" id="npwp" placeholder="NPWP" name="npwp" value="<?= isset($karyawans['npwp']) ? $karyawans['npwp'] : ''; ?>" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="username">USERNAME</label>
+                                                                            <input type="text" class="form-control" id="username" placeholder="Username" value="<?= isset($karyawans['username']) ? $karyawans['username'] : ''; ?>" name="username" readonly maxlength="30" pattern="[a-zA-Z0-9]+">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="nik">NIK</label>
+                                                                            <input type="text" class="form-control" id="nik" placeholder="NIK" name="nik" value="<?= isset($karyawans['nik']) ? $karyawans['nik'] : ''; ?>" readonly minlength="16" maxlength="16" pattern="\d+">
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="no_bpjs">KJP (NOMOR BPJS)</label>
+                                                                            <input type="text" class="form-control" id="no_bpjs" placeholder="KJP (Nomor BPJS)" value="<?= isset($karyawans['no_bpjs']) ? $karyawans['no_bpjs'] : ''; ?>" name="no_bpjs" readonly minlength="12" maxlength="13" pattern="\d+">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="tempat_lahir">TEMPAT LAHIR</label>
+                                                                        <select class="form-select select2" id="tempat_lahir" name="tempat_lahir" disabled>
+                                                                            <option value="<?= isset($karyawans['tempat_lahir']) ? $karyawans['tempat_lahir'] : ''; ?>" selected>
+                                                                                <?= isset($karyawans['tempat_lahir']) ? $karyawans['tempat_lahir'] : ''; ?>
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="tanggal_lahir">TANGGAL LAHIR</label>
+                                                                        <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir" name="tanggal_lahir" value="<?= isset($karyawans['tanggal_lahir']) ? $karyawans['tanggal_lahir'] : ''; ?>" readonly>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="jenis_kelamin">JENIS KELAMIN</label>
+                                                                        <select class="form-select select2" name="jenis_kelamin" id="jenis_kelamin" disabled>
+                                                                            <option value="<?= isset($karyawans['jenis_kelamin']) ? $karyawans['jenis_kelamin'] : ''; ?>" selected>
+                                                                                <?= isset($karyawans['jenis_kelamin']) ? $karyawans['jenis_kelamin'] : ''; ?>
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="alamat_ktp">ALAMAT SESUAI KTP</label>
+                                                                        <textarea class="form-control" id="alamat_ktp" placeholder="Alamat Sesuai KTP" name="alamat_ktp" readonly>
+                                                                            <?= isset($karyawans['alamat_ktp']) ? $karyawans['alamat_ktp'] : ''; ?>
+                                                                        </textarea>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="alamat_domisili">ALAMAT DOMISILI</label>
+                                                                        <textarea class="form-control" id="alamat_domisili" placeholder="Alamat Domisili" name="alamat_domisili" readonly>
+                                                                            <?= isset($karyawans['alamat_domisili']) ? $karyawans['alamat_domisili'] : ''; ?>
+                                                                        </textarea>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="alamat_korespondensi">ALAMAT KORESPONDENSI</label>
+                                                                        <textarea class="form-control" id="alamat_korespondensi" placeholder="Alamat Korespondensi" name="alamat_korespondensi" readonly>
+                                                                            <?= isset($karyawans['alamat_korespondensi']) ? $karyawans['alamat_korespondensi'] : ''; ?>
+                                                                        </textarea>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="provinsi">PILIH PROVINSI DOMISILI</label>
+                                                                            <select class="form-select select2" id="provinsi" name="provinsi" disabled>
+                                                                                <option value="<?= isset($karyawans['provinsi']) ? $karyawans['provinsi'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['provinsi']) ? $karyawans['provinsi'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="kota">PILIH KAB/KOTA DOMISILI</label>
+                                                                            <select class="form-select select2" id="kota" name="kota" disabled>
+                                                                                <option value="<?= isset($karyawans['kota']) ? $karyawans['kota'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['kota']) ? $karyawans['kota'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="unit_kerja">PILIH UNIT KERJA</label>
+                                                                            <select class="form-select select2" id="unit_kerja" name="unit_kerja" disabled>
+                                                                                <option value="<?= isset($karyawans['unit_kerja']) ? $karyawans['unit_kerja'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['unit_kerja']) ? $karyawans['unit_kerja'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="divisi">PILIH DIVISI</label>
+                                                                            <select class="form-select select2" id="divisi" name="divisi" disabled>
+                                                                                <option value="<?= isset($karyawans['divisi']) ? $karyawans['divisi'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['divisi']) ? $karyawans['divisi'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="jabatan">PILIH JABATAN</label>
+                                                                            <select class="form-select select2" id="jabatan" name="jabatan" disabled>
+                                                                                <option value="<?= isset($karyawans['jabatan']) ? $karyawans['jabatan'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['jabatan']) ? $karyawans['jabatan'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="grade">PILIH GRADE</label>
+                                                                            <select class="form-select select2" id="grade" name="grade" disabled>
+                                                                                <option value="<?= isset($karyawans['grade']) ? $karyawans['grade'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['grade']) ? $karyawans['grade'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="status_kontrak">PILIH STATUS KONTRAK</label>
+                                                                            <select class="form-select select2" id="status_kontrak" name="status_kontrak" disabled>
+                                                                                <option value="<?= isset($karyawans['status_kontrak']) ? $karyawans['status_kontrak'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['status_kontrak']) ? $karyawans['status_kontrak'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label class="form-label" for="tanggal_masuk">TANGGAL MASUK</label>
+                                                                        <input type="date" class="form-control" id="tanggal_masuk" placeholder="Tanggal Masuk" name="tanggal_masuk" value="<?= isset($karyawans['tanggal_masuk']) ? $karyawans['tanggal_masuk'] : ''; ?>" readonly>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="status_pernikahan">PILIH STATUS PERNIKAHAN</label>
+                                                                            <select class="form-select select2" id="status_pernikahan" name="status_pernikahan" disabled>
+                                                                                <option value="<?= isset($karyawans['status_pernikahan']) ? $karyawans['status_pernikahan'] : ''; ?>" selected>
+                                                                                    <?= isset($karyawans['status_pernikahan']) ? $karyawans['status_pernikahan'] : ''; ?>
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="jml_tanggungan">JUMLAH TANGGUNGAN</label>
+                                                                            <input type="number" class="form-control" id="jml_tanggungan" placeholder="Jumlah Tanggungan" value="<?= isset($karyawans['jml_tanggungan']) ? $karyawans['jml_tanggungan'] : ''; ?>" name="jml_tanggungan" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="email_kantor">EMAIL KANTOR</label>
+                                                                            <input type="email" class="form-control" id="email_kantor" placeholder="Email Kantor" value="<?= isset($karyawans['email_kantor']) ? $karyawans['email_kantor'] : ''; ?>" name="email_kantor" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="email_pribadi">EMAIL PRIBADI</label>
+                                                                            <input type="email" class="form-control" id="email_pribadi" placeholder="Email Pribadi" value="<?= isset($karyawans['email_pribadi']) ? $karyawans['email_pribadi'] : ''; ?>" name="email_pribadi" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="no_telp">NOMOR TELEPON</label>
+                                                                            <input type="text" class="form-control" id="no_telp" placeholder="Nomor Telepon" value="<?= isset($karyawans['no_telp']) ? $karyawans['no_telp'] : ''; ?>" name="no_telp" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-6">
+                                                                        <div class="mb-3">
+                                                                            <label class="form-label" for="no_rek">NOMOR REKENING</label>
+                                                                            <input type="text" class="form-control" id="no_rek" placeholder="Nomor Rekening" value="<?= isset($karyawans['no_rek']) ? $karyawans['no_rek'] : ''; ?>" name="no_rek" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="pas_foto">PAS FOTO</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="pas_foto" name="pas_foto" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="file_ktp">KTP</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="file_ktp" name="file_ktp" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="file_kjp">KJP</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="file_kjp" name="file_kjp" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="file_npwp">NPWP</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="file_npwp" name="file_npwp" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="file_kk">KARTU KELUARGA</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="file_kk" name="file_kk" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label" for="file_pendidikan">PENDIDIKAN TERAKHIR</label>
+                                                                        <div class="input-group">
+                                                                            <input type="file" class="form-control" id="file_pendidikan" name="file_pendidikan" readonly>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -586,6 +846,48 @@
         });
     </script>
 
+    <!-- javascript untuk menampilkan detail karyawan -->
+    <script>
+        $('.btn-details-karyawan').on('click', function () {
+            const idKaryawan = $(this).data('id-karyawan');
+
+            $.ajax({
+                url: `/data-karyawan/details/${idKaryawan}`,
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.status === 'success') {
+                        const data = response.data;
+                        $('#nama').val(data.nama);
+                        $('#nip').val(data.nip);
+                        $('#npwp').val(data.npwp);
+                        $('#tempatLahir').val(data.tempat_lahir);
+                        $('#tanggalLahir').val(data.tanggal_lahir);
+                        $('#divisi').val(data.divisi_id).trigger('change'); // Memicu ulang select2
+                        $('#jabatan').val(data.jabatan_id).trigger('change');
+                        $('#status_kontrak').val(data.status_kontrak_id).trigger('change');
+                        $('#status_pernikahan').val(data.status_pernikahan_id).trigger('change');
+                        $('#jml_tanggungan').val(data.jml_tanggungan);
+                        $('#email_kantor').val(data.email_kantor);
+                        $('#email_pribadi').val(data.email_pribadi);
+                        $('#no_telp').val(data.no_telp);
+                        $('#no_rek').val(data.no_rek);
+                        $('#pas_foto').val(data.pas_foto);
+                        $('#file_ktp').val(data.file_ktp);
+                        $('#file_kjp').val(data.file_kjp);
+                        $('#file_npwp').val(data.file_npwp);
+                        $('#file_kk').val(data.file_kk);
+                        $('#file_pendidikan').val(data.file_pendidikan);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('Terjadi kesalahan saat mengambil data.');
+                }
+            });
+        });
+    </script>
 
     <!-- javascript untuk mengatur checkbox alamat -->
     <script>
