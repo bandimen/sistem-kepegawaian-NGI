@@ -49,8 +49,8 @@
                     <?= $page_title ?>
                     <!-- Tabs Navigation -->
                     <div class="d-flex mb-4">
-                        <button class="tab-button active w-50" data-tab="form-tab">Form</button>
-                        <button class="tab-button w-50" data-tab="data-tab">Data</button>
+                        <button class="tab-button active" data-tab="form-tab">Form</button>
+                        <button class="tab-button" data-tab="data-tab">Data</button>
                     </div>
 
                     <!-- Tabs Content -->
@@ -845,7 +845,7 @@
 
     <!-- javascript untuk menampilkan detail karyawan -->
     <script>
-        $('.btn-details-karyawan').on('click', function () {
+        $('.details-karyawan').on('click', function () {
             const idKaryawan = $(this).data('id-karyawan');
 
             $.ajax({
