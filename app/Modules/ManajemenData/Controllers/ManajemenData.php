@@ -3,16 +3,20 @@
 namespace Modules\ManajemenData\Controllers;
 
 use App\Controllers\BaseController;
+use Modules\Jabatan\Controllers\Jabatan;
 use Modules\User\Models\UserModel;
+use Modules\Jabatan\Models\JabatanModel;
 
 class ManajemenData extends BaseController
 {
     protected $folder_directory = "Modules\\ManajemenData\\Views\\";
 
     protected $userModel;
+    protected $jabatanModel;
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->jabatanModel = new JabatanModel();
     }
 
     public function show_manajemen_provinsi()
@@ -48,11 +52,13 @@ class ManajemenData extends BaseController
         $sesi = session()->get();
 
         $userData = $this->userModel->getUser($sesi['user_id']);
+        $jabatanData = $this->jabatanModel->getAllJabatan();
 
         $data = [
             'title_meta' => view('partials/title-meta', ['title' => 'Data Jabatan']),
             'page_title' => view('partials/page-title', ['title' => 'Data Jabatan', 'li_1' => 'Manajemen Data', 'li_2' => 'Data Jabatan']),
             'userData'   => $userData,
+            'jabatanData' => $jabatanData,
         ];
 
         return view($this->folder_directory . 'data-jabatan', $data);
