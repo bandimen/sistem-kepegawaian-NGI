@@ -4,7 +4,12 @@
 <head>
 
     <?= $title_meta ?>
+    <!-- DataTables -->
+    <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
+    <!-- Responsive datatable examples -->
+    <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <?= $this->include('partials/head-css') ?>
     <style>
         .tab-button {
@@ -388,7 +393,7 @@
                     <div id="data-tab" class="tab-content">
                         <h4>Data</h4>
                         <p>Berikut adalah data karyawan PT. Nusantara Global Inovasi:</p>
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="datatable">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -422,14 +427,14 @@
                                                     <i class="dripicons-preview"></i> Detail
                                                 </button>
 
-                                                <!-- Modal -->  
+                                                <!-- Modal -->
                                                 <div class="modal fade bs-example-modal-center" id="karyawanModal" tabindex="-1" role="dialog" aria-labelledby="karyawanModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="karyawanModalLabel">Detail Karyawan</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>       
+                                                            </div>
                                                             <div class="modal-body">
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
@@ -707,6 +712,11 @@
     <?= $this->include('partials/right-sidebar') ?>
 
     <?= $this->include('partials/vendor-scripts') ?>
+    <script>
+        new DataTable('#data-karyawan');
+    </script>
+
+
     <!-- JavaScript untuk Navigasi Tab -->
     <script>
         const tabButtons = document.querySelectorAll('.tab-button');
@@ -848,14 +858,14 @@
 
     <!-- javascript untuk menampilkan detail karyawan -->
     <script>
-        $('.btn-details-karyawan').on('click', function () {
+        $('.btn-details-karyawan').on('click', function() {
             const idKaryawan = $(this).data('id-karyawan');
 
             $.ajax({
                 url: `/data-karyawan/details/${idKaryawan}`,
                 method: 'GET',
                 dataType: 'json',
-                success: function (response) {
+                success: function(response) {
                     if (response.status === 'success') {
                         const data = response.data;
                         $('#nama').val(data.nama);
@@ -882,7 +892,7 @@
                         alert(response.message);
                     }
                 },
-                error: function () {
+                error: function() {
                     alert('Terjadi kesalahan saat mengambil data.');
                 }
             });
@@ -921,6 +931,26 @@
     <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
     <!-- dashboard init -->
     <script src="assets/js/pages/dashboard.init.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Buttons examples -->
+    <script src="assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="assets/libs/jszip/jszip.min.js"></script>
+    <script src="assets/libs/pdfmake/build/pdfmake.min.js"></script>
+    <script src="assets/libs/pdfmake/build/vfs_fonts.js"></script>
+    <script src="assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="assets/js/pages/datatables.init.js"></script>
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
