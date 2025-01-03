@@ -59,18 +59,24 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Nama Jabatan</th>
+                                                <th>Label Jabatan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
-
-
                                         <tbody>
                                             <?php if (!empty($jabatanData)) : ?>
                                                 <?php foreach ($jabatanData as $index => $jabatan) : ?>
                                                     <tr>
                                                         <th><?= $index + 1 ?></th>
                                                         <td><?= esc($jabatan['nama']) ?></td>
-                                                        <td>E | D</td>
+                                                        <td><?= esc($jabatan['label']) ?></td>
+                                                        <td>
+                                                            <button class="btn btn-sm btn-outline-primary edit" title="Edit"
+                                                                data-id="<?= esc($jabatan['id']) ?>"
+                                                                data-nama="<?= esc($jabatan['nama']) ?>"
+                                                                data-label="<?= esc($jabatan['label']) ?>"><i class="fa fa-edit"></i></button>
+                                                            <button class="btn btn-sm btn-outline-danger delete" data-id="<?= esc($jabatan['id']) ?>" title="Delete"><i class="bx bx-trash-alt"></i></button>
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
@@ -80,15 +86,33 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="update" role="tabpanel">
-                                    <p class="mb-0">
-                                        Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-                                        single-origin coffee squid. Exercitation +1 labore velit, blog
-                                        sartorial PBR leggings next level wes anderson artisan four loko
-                                        farm-to-table craft beer twee. Qui photo booth letterpress,
-                                        commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                                        vinyl cillum PBR. Homo nostrud organic, assumenda labore
-                                        aesthetic magna delectus.
-                                    </p>
+                                    <form class="needs-validation" novalidate action="/data-jabatan/tambah" method="post">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="nama">Nama Jabatan</label>
+                                            <input type="text" class="form-control" id="nama" placeholder="Tentukan nama jabatan" name="nama" required>
+                                            <div class="valid-feedback">
+                                                Nama jabatan dapat digunakan
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="label">Label Jabatan</label>
+                                            <input type="text" class="form-control" id="label" placeholder="Tentukan label jabatan" name="label" required>
+                                            <div class="valid-feedback">
+                                                Label jabatan dapat digunakan
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                            <button type="reset" class="btn btn-danger">Reset</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div><!-- end card-body -->
@@ -108,6 +132,78 @@
     <?= $this->include('partials/right-sidebar') ?>
 
     <?= $this->include('partials/vendor-scripts') ?>
+
+    <!-- javascript untuk menampilkan data untuk dikirim ke update -->
+    <script>
+        $(document).ready(function() {
+            $('.edit').click(function() {
+                var id = $(this).data('id');
+                var nama = $(this).data('nama');
+                var label = $(this).data('label');
+
+                $('#nama').val(nama);
+                $('#label').val(label);
+
+                $('a[href="#update"]').tab('show');
+            })
+        })
+    </script>
+
+    <!-- javascript untuk swal ketika delete karyawan -->
+    <script>
+        $(document).ready(function() {
+            $('.delete').click(function(e) {
+                e.preventDefault();
+
+                const id = $(this).data('id');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Data jabatan akan hilang!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '<?= base_url('data-jabatan/delete') ?>',
+                            type: "POST",
+                            data: {
+                                id: id
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        title: "Deleted!",
+                                        text: "Data jabatan berhasil dihapus.",
+                                        icon: "success"
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: response.message || "Gagal menghapus data jabatan.",
+                                        icon: "error"
+                                    })
+                                }
+                            },
+                            error: function() {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: "An error occured while deleting the data.",
+                                    icon: "error"
+                                });
+                            }
+                        });
+
+                    }
+                });
+            });
+        });
+    </script>
     <!-- Required datatable js -->
     <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -126,6 +222,8 @@
     <!-- dashboard init -->
     <script src="assets/js/pages/dashboard.init.js"></script>
 
+    <!-- form validation -->
+    <script src="assets/js/pages/form-validation.init.js"></script>
     <!-- App js -->
     <script src="assets/js/app.js"></script>
 </body>
