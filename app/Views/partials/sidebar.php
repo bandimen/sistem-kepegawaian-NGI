@@ -60,6 +60,7 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="manajemen-provinsi" data-key="t-manajemen-provinsi"><?= 'Manajemen Provinsi' ?></a></li>
                         <li><a href="manajemen-kota" data-key="t-manajemen-kota"><?= 'Manajemen Kota' ?></a></li>
+                        <li><a href="data-jabatan" data-key="t-data-jabatan"><?= 'Data Jabatan' ?></a></li>
                     </ul>
                 </li>
 
