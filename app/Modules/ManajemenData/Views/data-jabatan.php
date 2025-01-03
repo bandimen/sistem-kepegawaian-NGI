@@ -93,7 +93,6 @@
                             </div>
                         </div><!-- end card-body -->
                     </div><!-- end card -->
-
                 </div>
                 <!-- container-fluid -->
             </div>

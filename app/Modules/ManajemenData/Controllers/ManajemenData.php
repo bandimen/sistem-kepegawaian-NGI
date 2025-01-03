@@ -63,4 +63,19 @@ class ManajemenData extends BaseController
 
         return view($this->folder_directory . 'data-jabatan', $data);
     }
+
+    public function show_data_unit_kerja()
+    {
+        $sesi = session()->get();
+
+        $userData = $this->userModel->getUser($sesi['user_id']);
+
+        $data = [
+            'title_meta' => view('partials/title-meta', ['title' => 'Data Jabatan']),
+            'page_title' => view('partials/page-title', ['title' => 'Data Jabatan', 'li_1' => 'Manajemen Data', 'li_2' => 'Data Jabatan']),
+            'userData'   => $userData,
+        ];
+
+        return view($this->folder_directory . 'data-unit-kerja', $data);
+    }
 }

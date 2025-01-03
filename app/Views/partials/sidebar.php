@@ -61,6 +61,7 @@
                         <li><a href="manajemen-provinsi" data-key="t-manajemen-provinsi"><?= 'Manajemen Provinsi' ?></a></li>
                         <li><a href="manajemen-kota" data-key="t-manajemen-kota"><?= 'Manajemen Kota' ?></a></li>
                         <li><a href="data-jabatan" data-key="t-data-jabatan"><?= 'Data Jabatan' ?></a></li>
+                        <li><a href="data-unit-kerja" data-key="t-data-unit-kerja"><?= 'Data Unit Kerja' ?></a></li>
                     </ul>
                 </li>
 
