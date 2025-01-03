@@ -3,7 +3,6 @@
 namespace Modules\ManajemenData\Controllers;
 
 use App\Controllers\BaseController;
-use Modules\Jabatan\Controllers\Jabatan;
 use Modules\User\Models\UserModel;
 use Modules\Jabatan\Models\JabatanModel;
 

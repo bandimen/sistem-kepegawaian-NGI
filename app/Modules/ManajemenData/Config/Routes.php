@@ -8,6 +8,9 @@ $routes->group('', ['namespace' => 'Modules\ManajemenData\Controllers'], functio
   $routes->get('data-provinsi', 'ManajemenData::show_data_provinsi');
   $routes->get('data-kota', 'ManajemenData::show_data_kota');
   $routes->get('data-jabatan', 'ManajemenData::show_data_jabatan');
+  $routes->get('data-jabatan/ceknama', 'JabatanAjax::cekNamaJabatan');
+  $routes->get('data-jabatan/ceklabel', 'JabatanAjax::cekLabelJabatan');
+  // $routes->get('data-jabatan/getAll', 'JabatanAjax::getAllJabatan');
   $routes->post('data-jabatan/tambah', 'JabatanController::tambah');
   $routes->post('data-jabatan/delete', 'JabatanController::delete');
 

@@ -86,15 +86,16 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="update" role="tabpanel">
-                                    <form class="needs-validation" novalidate action="/data-jabatan/tambah" method="post">
+                                    <form class="needs-validation" validate action="/data-jabatan/tambah" method="post">
+                                        <?= csrf_field(); ?>
                                         <div class="mb-3">
                                             <label class="form-label" for="nama">Nama Jabatan</label>
                                             <input type="text" class="form-control" id="nama" placeholder="Tentukan nama jabatan" name="nama" required>
                                             <div class="valid-feedback">
-                                                Nama jabatan dapat digunakan
+                                                Nama jabatan dapat digunakan.
                                             </div>
-                                            <div class="invalid-feedback">
-                                                Looks good!
+                                            <div class="invalid-feedback" id="nama-error">
+                                                Nama jabatan tidak valid!
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -103,13 +104,13 @@
                                             <div class="valid-feedback">
                                                 Label jabatan dapat digunakan
                                             </div>
-                                            <div class="invalid-feedback">
-                                                Looks good!
+                                            <div class="invalid-feedback" id="label-error">
+                                                Label jabatan tidak valid!
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                            <button type="submit" class="btn btn-primary" id="btn-simpan" disabled>Simpan</button>
                                             <button type="reset" class="btn btn-danger">Reset</button>
                                         </div>
                                     </form>
@@ -148,6 +149,113 @@
             })
         })
     </script>
+
+    <!-- javascript untuk validasi input -->
+    <script>
+        $(document).ready(function() {
+            function cekValidasi() {
+                if ($('.is-invalid').length > 0) {
+                    $('#btn-simpan').attr('disabled', true);
+                } else {
+                    $('#btn-simpan').attr('disabled', false);
+                }
+            }
+            // validasi nama ketika keyboard ditekan
+            $('#nama').keyup(function() {
+                var inputNama = $(this).val();
+                var regex = /\d/; // pattern angka
+
+                // cek angka
+                if (regex.test(inputNama)) {
+                    $('#nama-error').text('Nama jabatan tidak boleh mengandung angka').show();
+                    $('#nama').addClass('is-invalid');
+                } else {
+                    // kalo lolos lanjut cek unique
+                    $.ajax({
+                        url: '/data-jabatan/ceknama',
+                        type: 'GET',
+                        data: {
+                            nama: inputNama
+                        },
+                        success: function(response) {
+                            if (response.exists) {
+                                $('#nama-error').text('Nama jabatan sudah ada').show();
+                                $('#nama').addClass('is-invalid');
+                            } else {
+                                $('#nama-error').hide();
+                                $('#nama').removeClass('is-invalid');
+                            }
+                        },
+                        error: function() {
+                            $('#nama-error').text('Terjadi kesalahan, coba lagi').show();
+                            $('#nama').addClass('is-invalid');
+                        },
+                        complete: cekValidasi
+                    });
+                }
+            });
+
+            // validasi Label
+            $('#label').keyup(function() {
+                var inputLabel = $(this).val();
+                var regex = /\d/; // 
+
+                if (regex.test(inputLabel)) {
+                    $('#label-error').text('Label jabatan tidak boleh mengandung angka').show();
+                    $('#label').addClass('is-invalid');
+                } else {
+                    $.ajax({
+                        url: '/data-jabatan/ceklabel',
+                        type: 'GET',
+                        data: {
+                            label: inputLabel
+                        },
+                        success: function(response) {
+                            if (response.exists) {
+                                $('#label-error').text('Label jabatan sudah ada').show();
+                                $('#label').addClass('is-invalid');
+                            } else {
+                                $('#label-error').hide();
+                                $('#label').removeClass('is-invalid');
+                            }
+                        },
+                        error: function() {
+                            $('#label-error').text('Terjadi kesalahan, coba lagi').show();
+                            $('#label').addClass('is-invalid');
+                        },
+                        complete: cekValidasi
+                    });
+                }
+            });
+            cekValidasi();
+        });
+    </script>
+
+    <!-- <script>
+        function reloadTable() {
+            $.ajax({
+                url: '/data-jabatan/getAll', // Endpoint untuk mengambil semua data jabatan
+                type: 'GET',
+                success: function(response) {
+                    // Memperbarui tabel dengan data baru
+                    var tableBody = $('#datatable tbody');
+                    tableBody.empty(); // Hapus tabel lama
+                    $.each(response.jabatanData, function(index, jabatan) {
+                        var row = '<tr>' +
+                            '<th>' + (index + 1) + '</th>' +
+                            '<td>' + jabatan.nama + '</td>' +
+                            '<td>' + jabatan.label + '</td>' +
+                            '<td>' +
+                            '<button class="btn btn-sm btn-outline-primary edit" title="Edit" data-id="' + jabatan.id + '" data-nama="' + jabatan.nama + '" data-label="' + jabatan.label + '"><i class="fa fa-edit"></i></button>' +
+                            '<button class="btn btn-sm btn-outline-danger delete" data-id="' + jabatan.id + '" title="Delete"><i class="bx bx-trash-alt"></i></button>' +
+                            '</td>' +
+                            '</tr>';
+                        tableBody.append(row);
+                    });
+                }
+            });
+        }
+    </script> -->
 
     <!-- javascript untuk swal ketika delete karyawan -->
     <script>
