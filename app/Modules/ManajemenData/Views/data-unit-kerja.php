@@ -63,9 +63,9 @@
                                                 <th>Age</th>
                                                 <th>Start date</th>
                                                 <th>Salary</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
-
 
                                         <tbody>
                                             <tr>
@@ -75,6 +75,10 @@
                                                 <td>61</td>
                                                 <td>2011/04/25</td>
                                                 <td>$320,800</td>
+                                                  <td>
+                                                       <button class="btn btn-sm btn-outline-primary edit" title="Edit"><i class="fa fa-edit"></i></button>
+                                                       <button class="btn btn-sm btn-outline-danger delete" title="Delete"><i class="bx bx-trash-alt"></i></button>
+                                                  </td>
                                             </tr>
                                             <tr>
                                                 <td>Garrett Winters</td>
