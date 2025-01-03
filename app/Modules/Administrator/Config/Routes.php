@@ -6,4 +6,5 @@ if (!isset($routes)) {
 
 $routes->group('', ['namespace' => 'Modules\Administrator\Controllers', 'filter' => 'auth'], function ($routes) {
   $routes->get('manajemen-user', 'Administrator::show_manajemen_user');
+  $routes->get('manajemen-jenis-user', 'Administrator::show_manajemen_jenis_user');
 });

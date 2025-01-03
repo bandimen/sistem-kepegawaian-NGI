@@ -58,18 +58,18 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nama Unit Kerja</th>
+                                                <th>Nama Status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
 
 
                                         <tbody>
-                                            <?php if (!empty($unitKerjaData)) : ?>
-                                                <?php foreach ($unitKerjaData as $index => $unitKerja) : ?>
+                                            <?php if (!empty($statusKontrakData)) : ?>
+                                                <?php foreach ($statusKontrakData as $index => $statusKontrak) : ?>
                                                     <tr>
                                                         <th><?= $index + 1 ?></th>
-                                                        <td><?= esc($unitKerja['nama']) ?></td>
+                                                        <td><?= esc($statusKontrak['status']) ?></td>
                                                         <td>
                                                             <button class="btn btn-sm btn-outline-primary edit" title="Edit"><i class="fa fa-edit"></i></button>
                                                             <button class="btn btn-sm btn-outline-danger delete" title="Delete"><i class="bx bx-trash-alt"></i></button>

@@ -58,18 +58,19 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Nama Unit Kerja</th>
-                                                <th>Aksi</th>
+                                                <th>Kode Provinsi</th>
+                                                <th>Nama Provinsi</th>
                                             </tr>
                                         </thead>
 
 
                                         <tbody>
-                                            <?php if (!empty($unitKerjaData)) : ?>
-                                                <?php foreach ($unitKerjaData as $index => $unitKerja) : ?>
+                                            <?php if (!empty($provinsiData)) : ?>
+                                                <?php foreach ($provinsiData as $index => $provinsi) : ?>
                                                     <tr>
                                                         <th><?= $index + 1 ?></th>
-                                                        <td><?= esc($unitKerja['nama']) ?></td>
+                                                        <td><?= esc($provinsi['kode']) ?></td>
+                                                        <td><?= esc($provinsi['nama']) ?></td>
                                                         <td>
                                                             <button class="btn btn-sm btn-outline-primary edit" title="Edit"><i class="fa fa-edit"></i></button>
                                                             <button class="btn btn-sm btn-outline-danger delete" title="Delete"><i class="bx bx-trash-alt"></i></button>

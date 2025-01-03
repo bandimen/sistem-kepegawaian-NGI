@@ -32,7 +32,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="manajemen-user" data-key="t-manajemen-user"><?= 'Manajemen User' ?></a></li>
-                        <li><a href="manajemen-jenisuser" data-key="t-manajemen-jenisuser"><?= 'Manajemen Jenis User' ?></a></li>
+                        <li><a href="manajemen-jenis-user" data-key="t-manajemen-jenis-user"><?= 'Manajemen Jenis User' ?></a></li>
                     </ul>
                 </li>
 
@@ -58,10 +58,11 @@
                         <span data-key="t-tables"><?= 'Manajemen Data' ?></span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="manajemen-provinsi" data-key="t-manajemen-provinsi"><?= 'Manajemen Provinsi' ?></a></li>
-                        <li><a href="manajemen-kota" data-key="t-manajemen-kota"><?= 'Manajemen Kota' ?></a></li>
+                        <li><a href="data-provinsi" data-key="t-data-provinsi"><?= 'Data Provinsi' ?></a></li>
+                        <li><a href="data-kota" data-key="t-data-kota"><?= 'Data Kota' ?></a></li>
                         <li><a href="data-jabatan" data-key="t-data-jabatan"><?= 'Data Jabatan' ?></a></li>
                         <li><a href="data-unit-kerja" data-key="t-data-unit-kerja"><?= 'Data Unit Kerja' ?></a></li>
+                        <li><a href="data-status-kontrak" data-key="t-data-status-kontrak"><?= 'Data Status Kontrak' ?></a></li>
                     </ul>
                 </li>
 
